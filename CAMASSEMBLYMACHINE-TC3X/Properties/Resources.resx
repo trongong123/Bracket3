@@ -1,0 +1,505 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="TITLE_MACHINE" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Label\Title.Machine.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TITLE_VISION" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Label\Title.Vision.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TITLE_MACHINE_SEL" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Label\Title.Machine.Sel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TITLE_VISION_SEL" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Label\Title.Vision.Sel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_SubUI_Login_Button_Click" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_SubUI_Login_Button_Click.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_MainForm_ManualTab_Click_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_MainForm_ManualTab_Click_Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_Click_Resource" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_Click_Resource.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NA.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MODE_PASSRUN_DISABLE" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Button\Mode.Passrun.Disable.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_SubUI_Title_Input_IO" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_SubUI_Title_Input IO.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_SubUI_Origin_Default" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_SubUI_Origin_Default.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Red.HOver" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Label\Red.HOver.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="HOver" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Label\HOver.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_IO_Output_Default" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_IO_Output_Default.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FORM_ALARM" xml:space="preserve">
+    <value>Alarm</value>
+  </data>
+  <data name="FORM_INIT" xml:space="preserve">
+    <value>Initialize</value>
+  </data>
+  <data name="NV_SubUI_SysClose_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_SubUI_SysClose_Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_GREEN_Hover_Resource" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_GREEN_Hover_Resource.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_GREEN_Default_Resource" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_GREEN_Default_Resource.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_SubUI_Title_UnitInitialize" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_SubUI_Title_UnitInitialize.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_GREEN_Click_Resource" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_GREEN_Click_Resource.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_OP_Off_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_OP_Off_Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LED_RED" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Label\LED.Red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FORM_PRODUCT" xml:space="preserve">
+    <value>ProductInfo</value>
+  </data>
+  <data name="NV_SubUI_Title_InitState" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_SubUI_Title_InitState.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_SubUI_Title_LOGIN" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_SubUI_Title_LOGIN.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_IO_Output_Click" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_IO_Output_Click.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_MainUI_Common_UnCheck_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_MainUI_Common_UnCheck_Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_TT_Paddingless" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_TT_Paddingless.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_SubUI_Title_ProductInfo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_SubUI_Title_ProductInfo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_MainUI_Common_Button_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_MainUI_Common_Button_Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MODE_AUTO_DISABLE" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Button\Mode.Auto.Disable.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_SubUI_Login_Button_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_SubUI_Login_Button_Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WarningRunMode" xml:space="preserve">
+    <value>Please select run mode with "SELECT MODE" button</value>
+  </data>
+  <data name="NV_MainUI_Common_Button_Default" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_MainUI_Common_Button_Default.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WarningForm" xml:space="preserve">
+    <value>Please close all forms without MainForm</value>
+  </data>
+  <data name="LED_GRAY" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Label\LED.Gray.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_SubUI_Title_Origin" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_SubUI_Title_Origin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_SubUI_Origin_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_SubUI_Origin_Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MODE_BYPASS_DISABLE" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Button\Mode.Bypass.Disable.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_SubUI_Title_SelectMode" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_SubUI_Title_SelectMode.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_SubUI_Origin_Default1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_SubUI_Origin_Default1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_MainForm_ManualTab_Default" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_MainForm_ManualTab_Default.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_Mainfrom_TeachingTab_Save_Click" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_Mainfrom_TeachingTab_Save_Click.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_Symbol_Output" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_Symbol_Output.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MODE_DRYRUN_DISABLE" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Button\Mode.Dryrun.Disable.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_SubUI_Output_Index4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_SubUI_Output_Index4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_SubUI_Login_Button_Default" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_SubUI_Login_Button_Default.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_Mainfrom_TeachingTab_Save_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_Mainfrom_TeachingTab_Save_Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_SubUI_Output_Index5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_SubUI_Output_Index5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MODE_AUTO" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Button\Mode.Auto.Default.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_SubUI_SysClose_Click" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_SubUI_SysClose_Click.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Loading_ComFAS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Loading_ComFAS.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MODE_PASSRUN" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Button\Mode.Passrun.Default.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_Hover_Resource" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_Hover_Resource.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MODE_BYPASS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Button\Mode.Bypass.Default.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_MainUI_Common_Button_Main_Default" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_MainUI_Common_Button_Main_Default.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_MainForm_ManualTab_Click" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_MainForm_ManualTab_Click.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="QExit" xml:space="preserve">
+    <value>Do you want to terminate program?</value>
+  </data>
+  <data name="WarningAutoTab" xml:space="preserve">
+    <value>Please retry after selecting auto tab</value>
+  </data>
+  <data name="NV_SubUI_Origin_Click" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_SubUI_Origin_Click.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_MainUI_Total_Count" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_MainUI_Total_Count.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_Mainfrom_TeachingTab_Save_Default" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_Mainfrom_TeachingTab_Save_Default.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_MainUI_Common_UnCheck" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_MainUI_Common_UnCheck.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_SubUI_Login_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_SubUI_Login_Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_MainUI_Tact_Time_Sec" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_MainUI_Tact_Time_Sec.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_MainUI_Common_Button_On" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_MainUI_Common_Button_On.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MODE_DRYRUN" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Button\Mode.Dryrun.Default.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_SubUI_Origin_Hover1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_SubUI_Origin_Hover1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_SubUl_Modify_Default_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_SubUl_Modify_Default_Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LED_YELLOW" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Label\LED.Yellow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Set_Horizontal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Set_Horizontal.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_Default_Resource" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_Default_Resource.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_SubUI_Login_Password" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_SubUI_Login_Password.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LED_GREEN" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Label\LED.Green.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_MainUI_Common_Button_On_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_MainUI_Common_Button_On_Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Loading" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Loading.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_SubUI_Title_Log" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_SubUI_Title_Log.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_MainUI_Common_Check_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_MainUI_Common_Check_Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_SubUI_Title_Output_IO" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_SubUI_Title_Output IO.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FORM_SELECT" xml:space="preserve">
+    <value>SelectMode</value>
+  </data>
+  <data name="NV_SubUI_Origin_Click1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_SubUI_Origin_Click1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FORM_IO" xml:space="preserve">
+    <value>IOMonitor</value>
+  </data>
+  <data name="NV_SubUl_Modify_Default" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_SubUl_Modify_Default.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_TactTime" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_TactTime.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_MainUI_Common_Check" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_MainUI_Common_Check.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_MainForm_ManualTab_Default_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_MainForm_ManualTab_Default_Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_Mainform_AutoTab_Model" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_Mainform_AutoTab_Model.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_MainUI_Common_Button_Main_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_MainUI_Common_Button_Main_Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_SubUl_Modify_Cilck" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_SubUl_Modify_Cilck.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_MainUI_Common_Button_Click" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_MainUI_Common_Button_Click.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_Symbol_Input" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_Symbol_Input.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IO.Disable" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Button\IO.Disable.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MAIN_UW" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MAIN_UW.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_ETC_Exit_Click" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_ETC_Exit_Click.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_ETC_Exit_Default" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_ETC_Exit_Default.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_ETC_Exit_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_ETC_Exit_Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_MainUI_Common_Button_Main_Click" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_MainUI_Common_Button_Main_Click.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="arrow_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Label\arrow_down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="arrow_left" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Label\arrow_left.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="arrow_right" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Label\arrow_right.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="arrow_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Label\arrow_up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="camera_normal_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\camera_normal_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="camera_normal_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\camera_normal_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="camera_selected" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\camera_selected.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Disable" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Label\Disable.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Front_Tray_Left_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Front Tray Left Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MAIN_UW_Auto" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Machine\MAIN_UW_Auto.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NRed_Default" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Label\NRed.Default.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Home_Click" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Button\Home.Click.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Home_Default" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Button\Home.Default.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Home_HOver" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Button\Home.HOver.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_OP_Off_Default" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_OP_Off_Default.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SubTitle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Label\SubTitle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Start_Disable" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Button\Start.Disable.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="StopDisable" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Button\StopDisable.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Stop_Default" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Button\Stop.Default.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Product_Click_NoPoint" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Button\Product.Click_NoPoint.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Product_Default_NoPoint" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Button\Product.Default_NoPoint.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Product_HOver_NoPoint" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Button\Product.HOver_NoPoint.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NV_SubTitle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NV_SubTitle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Start_Click" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Button\Start.Click.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Stop_Click" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Button\Stop.Click.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TITLE_NETWORK" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Title.Network.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TITLE_NETWORK_SEL" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Title Network.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WARNING_DOOR" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WARNING_DOOR.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WARNING_EMGSTOP" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WARNING_EMGSTOP.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WARNING_LIGHTCURTAIN" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WARNING_LIGHTCURTAIN.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+</root>

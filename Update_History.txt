@@ -1,0 +1,43 @@
+------------------------------------------------------------------------------
+시간: 20260130
+버전: 260130_1
+수정자: LYJ
+업데이트 내역: 
+1. ProductCount Total 코드 추가 및 NG %는 둘쨰짜리까지 출력
+2. Left/Right Buffer Manual MovePos는 Peeling 모두 Down 확인 Interlock 추가
+3. SoftLimitData 기능 추가 및 RegOption과 함께 Hidden Group으로 묶임
+4. ProcessBufStage내 Peeling / Transfer의 센서 체크 타임아웃 알람 코드 추가
+* TImeOut 시간은 일단 Cylinder Timeout으로 통일
+* ErrorList와 Enum 수정해서 일부 Clamp 알람 없는 거 추가 후 ErrorList 재정리 필요
+* ErrorList는 Code를 Tag 값으로 바꾸고 베트남어도 추가해야겠지
+5. Param/Recipe Data의 EnumDefine 변경 시 데이터 추가 + 정렬 => 강제종료 후 수동추가 해야함 
+6. 다른 MainForm (Data에서 Manual/Auto같은) 이동 후 복귀 시 Title 안바뀌는 버그 수정
+7. MainForm 상단 Version 표시 값을 MachineName에서 SystemName + ProductName 으로 변경 
+* 이것은 프로그램 버전이기 떄문
+8. Backup 파일 저장 경로 변경 (가독성 수정 및 분류)
+9. Model별로 recipeDefine.csv 추가 이것은 7번의 ProductName이 된다.
+* EDM으로 보낼떄는 CAMASSEMBLYMACHINE-C-V2 = SystemName / 1~6번 설비 공통
+* 위의 UI는 CAMASSEMBLYMACHINE-C-V2-[ProudctName : WC, UWC, TAPE ...]
+------------------------------------------------------------------------------
+시간: 20260129
+버전: 260129_2
+수정자: hieu
+업데이트 내역: ng box 
+기타:
+------------------------------------------------------------------------------
+시간: 20260131
+버전: 260131_1
+수정자: hieu
+업데이트 내역: 
+1. Vision Ratio Add
+2. Assemble bug fix
+3. Add Jig NG Image (Black Screen)
+4. Auto Set Light when start AutoRun
+------------------------------------------------------------------------------
+시간: 20260202
+버전: 260202_1
+수정자: hieu
+업데이트 내역: 
+1. Tray TRF Loading Retry pitch, max count add
+2. Tray Direction Vpp Script
+3. Tray TRF Loading complete interface

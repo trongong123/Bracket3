@@ -1,0 +1,1209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9AFBA3D0-F724-4716-9B1B-39A69BF412C9}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>CAMASSEMBLYMACHINE</RootNamespace>
+    <AssemblyName>CAMASSEMBLYMACHINE</AssemblyName>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <PublishUrl>게시\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>C:\FA\Bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AxInterop.CognexDisplay, Version=87.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\FA\bin\AxInterop.CognexDisplay.dll</HintPath>
+    </Reference>
+    <Reference Include="Cognex.VisionPro, Version=69.2.2.0, Culture=neutral, PublicKeyToken=ef0f902af9dee505, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Cognex\VisionPro\ReferencedAssemblies\Cognex.VisionPro.dll</HintPath>
+    </Reference>
+    <Reference Include="Cognex.VisionPro.Blob, Version=87.1.0.0, Culture=neutral, PublicKeyToken=ef0f902af9dee505, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Cognex\VisionPro\ReferencedAssemblies\Cognex.VisionPro.Blob.dll</HintPath>
+    </Reference>
+    <Reference Include="Cognex.VisionPro.CalibFix, Version=87.1.0.0, Culture=neutral, PublicKeyToken=ef0f902af9dee505, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\FA\bin\Cognex.VisionPro.CalibFix.dll</HintPath>
+    </Reference>
+    <Reference Include="Cognex.VisionPro.Caliper, Version=87.1.0.0, Culture=neutral, PublicKeyToken=ef0f902af9dee505, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Cognex\VisionPro\ReferencedAssemblies\Cognex.VisionPro.Caliper.dll</HintPath>
+    </Reference>
+    <Reference Include="Cognex.VisionPro.Controls, Version=87.1.0.0, Culture=neutral, PublicKeyToken=ef0f902af9dee505, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Cognex\VisionPro\ReferencedAssemblies\Cognex.VisionPro.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Cognex.VisionPro.Core, Version=87.1.0.0, Culture=neutral, PublicKeyToken=ef0f902af9dee505, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Cognex\VisionPro\ReferencedAssemblies\Cognex.VisionPro.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Cognex.VisionPro.CorePlus, Version=87.1.0.0, Culture=neutral, PublicKeyToken=ef0f902af9dee505, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Cognex\VisionPro\ReferencedAssemblies\Cognex.VisionPro.CorePlus.dll</HintPath>
+    </Reference>
+    <Reference Include="Cognex.VisionPro.Display.Controls, Version=87.1.0.0, Culture=neutral, PublicKeyToken=ef0f902af9dee505, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Cognex\VisionPro\ReferencedAssemblies\Cognex.VisionPro.Display.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Cognex.VisionPro.ID, Version=87.1.0.0, Culture=neutral, PublicKeyToken=ef0f902af9dee505, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Cognex\VisionPro\ReferencedAssemblies\Cognex.VisionPro.ID.dll</HintPath>
+    </Reference>
+    <Reference Include="Cognex.VisionPro.ImageFile, Version=69.2.2.0, Culture=neutral, PublicKeyToken=ef0f902af9dee505, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Cognex\VisionPro\ReferencedAssemblies\Cognex.VisionPro.ImageFile.dll</HintPath>
+    </Reference>
+    <Reference Include="Cognex.VisionPro.OCRMax, Version=87.1.0.0, Culture=neutral, PublicKeyToken=ef0f902af9dee505, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Cognex\VisionPro\ReferencedAssemblies\Cognex.VisionPro.OCRMax.dll</HintPath>
+    </Reference>
+    <Reference Include="Cognex.VisionPro.PMAlign, Version=87.1.0.0, Culture=neutral, PublicKeyToken=ef0f902af9dee505, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Cognex\VisionPro\ReferencedAssemblies\Cognex.VisionPro.PMAlign.dll</HintPath>
+    </Reference>
+    <Reference Include="NV_UI">
+      <HintPath>libs\NV_UI.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System.Text.Json, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Define\CommDefine.cs" />
+    <Compile Include="Define\ErrorDefine.cs" />
+    <Compile Include="Define\ParameterDefine.cs" />
+    <Compile Include="Define\RecipeDefine.cs" />
+    <Compile Include="Define\StatusDefine.cs" />
+    <Compile Include="Define\SystemDefine.cs" />
+    <Compile Include="Define\SystemStatus.cs" />
+    <Compile Include="Define\UIDefine.cs" />
+    <Compile Include="EDM.cs" />
+    <Compile Include="HW\Devices\AjinExt\AjinExt.cs" />
+    <Compile Include="HW\Devices\AjinExt\AjinIO.cs" />
+    <Compile Include="HW\Devices\IIO.cs" />
+    <Compile Include="HW\Devices\IMotion.cs" />
+    <Compile Include="HW\Devices\AjinExt\Lib\AXA.cs" />
+    <Compile Include="HW\Devices\AjinExt\Lib\AXC.cs" />
+    <Compile Include="HW\Devices\AjinExt\Lib\AXD.cs" />
+    <Compile Include="HW\Devices\AjinExt\Lib\AXDev.cs" />
+    <Compile Include="HW\Devices\AjinExt\Lib\AXHD.cs" />
+    <Compile Include="HW\Devices\AjinExt\Lib\AXHS.cs" />
+    <Compile Include="HW\Devices\AjinExt\Lib\AXL.cs" />
+    <Compile Include="HW\Devices\AjinExt\Lib\AXM.cs" />
+    <Compile Include="HW\Modules\MachineStatus.cs" />
+    <Compile Include="Process\Parameters.cs" />
+    <Compile Include="Process\ProcessError.cs" />
+    <Compile Include="Process\ProcessHOME.cs" />
+    <Compile Include="Process\ProcessHomeRAxis.cs" />
+    <Compile Include="Process\Recipe.cs" />
+    <Compile Include="Process\Status.cs" />
+    <Compile Include="Process\Unit\ProcessJigInBuf.cs" />
+    <Compile Include="Process\Unit\ProcessBufStageOne.cs" />
+    <Compile Include="Process\Unit\ProcessJigInCarrier.cs" />
+    <Compile Include="Process\Unit\ProcessJigOutBuf.cs" />
+    <Compile Include="Process\Unit\ProcessJigOutCarrier.cs" />
+    <Compile Include="Process\Unit\ProcessJigWork.cs" />
+    <Compile Include="Process\Unit\ProcessProdLoader.cs" />
+    <Compile Include="Process\Unit\ProcessTrayIn.cs" />
+    <Compile Include="Process\Unit\ProcessTrayInBuf.cs" />
+    <Compile Include="Process\Unit\ProcessTrayOut.cs" />
+    <Compile Include="Process\Unit\ProcessTrayOutBuf.cs" />
+    <Compile Include="Process\Unit\ProcessAssembler.cs" />
+    <Compile Include="Process\IProcess.cs" />
+    <Compile Include="Machine.cs" />
+    <Compile Include="Process\ProcessData.cs" />
+    <Compile Include="Process\ProcessSys.cs" />
+    <Compile Include="Process\ProcessExternalEquip.cs" />
+    <Compile Include="Process\Unit\ProcessTrayWork.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\IForm.cs" />
+    <Compile Include="UI\Page\autoForm\Form_Auto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Page\autoForm\Form_Auto.Designer.cs">
+      <DependentUpon>Form_Auto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Page\autoForm\tabNetworkAuto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Page\autoForm\tabNetworkAuto.Designer.cs">
+      <DependentUpon>tabNetworkAuto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Page\autoForm\tabSummaryAuto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Page\autoForm\tabSummaryAuto.Designer.cs">
+      <DependentUpon>tabSummaryAuto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Page\autoForm\tabVisionAuto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Page\autoForm\tabVisionAuto.Designer.cs">
+      <DependentUpon>tabVisionAuto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Page\DataForm\Form_Data2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Page\DataForm\Form_Data2.Designer.cs">
+      <DependentUpon>Form_Data2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Page\DataForm\tabCalibrationData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Page\DataForm\tabCalibrationData.Designer.cs">
+      <DependentUpon>tabCalibrationData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Page\DataForm\tabModelData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Page\DataForm\tabModelData.Designer.cs">
+      <DependentUpon>tabModelData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Page\DataForm\tabOptionData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Page\DataForm\tabOptionData.Designer.cs">
+      <DependentUpon>tabOptionData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Page\DataForm\tabParameterData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Page\DataForm\tabParameterData.Designer.cs">
+      <DependentUpon>tabParameterData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Page\DataForm\tabRegisterData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Page\DataForm\tabRegisterData.Designer.cs">
+      <DependentUpon>tabRegisterData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Page\DataForm\tabSoftLimitData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Page\DataForm\tabSoftLimitData.Designer.cs">
+      <DependentUpon>tabSoftLimitData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Page\DataForm\tabVisionProp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Page\DataForm\tabVisionProp.Designer.cs">
+      <DependentUpon>tabVisionProp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Page\LogForm\Form_Log.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Page\LogForm\Form_Log.Designer.cs">
+      <DependentUpon>Form_Log.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Page\LogForm\tabBarcodeLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Page\LogForm\tabBarcodeLog.Designer.cs">
+      <DependentUpon>tabBarcodeLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Page\LogForm\tabEDMLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Page\LogForm\tabEDMLog.Designer.cs">
+      <DependentUpon>tabEDMLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Page\LogForm\tabErrorLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Page\LogForm\tabErrorLog.Designer.cs">
+      <DependentUpon>tabErrorLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Page\LogForm\tabInspectionLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Page\LogForm\tabInspectionLog.Designer.cs">
+      <DependentUpon>tabInspectionLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Page\LogForm\tabDataLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Page\LogForm\tabDataLog.Designer.cs">
+      <DependentUpon>tabDataLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Page\LogForm\tabSystemLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Page\LogForm\tabSystemLog.Designer.cs">
+      <DependentUpon>tabSystemLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Page\ManualForm\tabAssemblerManu3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Page\ManualForm\tabAssemblerManu3.Designer.cs">
+      <DependentUpon>tabAssemblerManu3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Page\ManualForm\tabJigInOutManu3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Page\ManualForm\tabJigInOutManu3.Designer.cs">
+      <DependentUpon>tabJigInOutManu3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Page\ManualForm\tabLeftBufferManu3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Page\ManualForm\tabLeftBufferManu3.Designer.cs">
+      <DependentUpon>tabLeftBufferManu3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Page\ManualForm\tabProdLoaderManu3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Page\ManualForm\tabProdLoaderManu3.Designer.cs">
+      <DependentUpon>tabProdLoaderManu3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Page\ManualForm\tabRightBufferManu3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Page\ManualForm\tabRightBufferManu3.Designer.cs">
+      <DependentUpon>tabRightBufferManu3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Page\ManualForm\tabTrayInOutManu3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Page\ManualForm\tabTrayInOutManu3.Designer.cs">
+      <DependentUpon>tabTrayInOutManu3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Page\ManualForm\tabVisionManuProp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Page\ManualForm\tabVisionManuProp.Designer.cs">
+      <DependentUpon>tabVisionManuProp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Page\TeachingForm\tabAssemblerTeach.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Page\TeachingForm\tabAssemblerTeach.designer.cs">
+      <DependentUpon>tabAssemblerTeach.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Page\TeachingForm\tabBufferTeach2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Page\TeachingForm\tabBufferTeach2.designer.cs">
+      <DependentUpon>tabBufferTeach2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Page\TeachingForm\tabJigTeach.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Page\TeachingForm\tabJigTeach.designer.cs">
+      <DependentUpon>tabJigTeach.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Page\TeachingForm\tabProdLoaderPickerCalib.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Page\TeachingForm\tabProdLoaderPickerCalib.Designer.cs">
+      <DependentUpon>tabProdLoaderPickerCalib.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Page\TeachingForm\tabCalMapControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Page\TeachingForm\tabCalMapControl.Designer.cs">
+      <DependentUpon>tabCalMapControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Page\TeachingForm\tabCalPointDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Page\TeachingForm\tabCalPointDetail.Designer.cs">
+      <DependentUpon>tabCalPointDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Page\TeachingForm\tabOffsetTeach.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Page\TeachingForm\tabOffsetTeach.designer.cs">
+      <DependentUpon>tabOffsetTeach.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Page\TeachingForm\tabAssemblerJigCalib.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Page\TeachingForm\tabAssemblerJigCalib.Designer.cs">
+      <DependentUpon>tabAssemblerJigCalib.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Page\TeachingForm\tabAssemblerUnderCalib.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Page\TeachingForm\tabAssemblerUnderCalib.Designer.cs">
+      <DependentUpon>tabAssemblerUnderCalib.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Page\DataForm\tabWorkTimeData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Page\DataForm\tabWorkTimeData.Designer.cs">
+      <DependentUpon>tabWorkTimeData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Page\TeachingForm\tabProdLoaderTeach.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Page\TeachingForm\tabProdLoaderTeach.designer.cs">
+      <DependentUpon>tabProdLoaderTeach.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Page\TeachingForm\tabProdLoaderTrayCalib.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Page\TeachingForm\tabProdLoaderTrayCalib.Designer.cs">
+      <DependentUpon>tabProdLoaderTrayCalib.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Page\TeachingForm\tabTrayTeach.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Page\TeachingForm\tabTrayTeach.designer.cs">
+      <DependentUpon>tabTrayTeach.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Pane\Form_PaneAlignDisplay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Pane\Form_PaneAlignDisplay.Designer.cs">
+      <DependentUpon>Form_PaneAlignDisplay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Pane\Form_PanePickerJog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Pane\Form_PanePickerJog.Designer.cs">
+      <DependentUpon>Form_PanePickerJog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Popup\Form_Initialize2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Popup\Form_Initialize2.designer.cs">
+      <DependentUpon>Form_Initialize2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Popup\Form_InitState.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Popup\Form_InitState.designer.cs">
+      <DependentUpon>Form_InitState.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Popup\Form_InitState2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Popup\Form_InitState2.designer.cs">
+      <DependentUpon>Form_InitState2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Popup\Form_IOMonitor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Popup\Form_IOMonitor.Designer.cs">
+      <DependentUpon>Form_IOMonitor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Popup\Form_Origin2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Popup\Form_Origin2.designer.cs">
+      <DependentUpon>Form_Origin2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Popup\Form_ProcessView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Popup\Form_ProcessView.Designer.cs">
+      <DependentUpon>Form_ProcessView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Popup\Form_ProductInfo2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Popup\Form_ProductInfo2.Designer.cs">
+      <DependentUpon>Form_ProductInfo2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SubForm\SubForm_CycleStop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SubForm\SubForm_CycleStop.Designer.cs">
+      <DependentUpon>SubForm_CycleStop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SubForm\SubForm_GripManual.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SubForm\SubForm_GripManual.Designer.cs">
+      <DependentUpon>SubForm_GripManual.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SubForm\SubForm_InputText.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SubForm\SubForm_InputText.designer.cs">
+      <DependentUpon>SubForm_InputText.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SubForm\SubForm_Loading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SubForm\SubForm_Loading.designer.cs">
+      <DependentUpon>SubForm_Loading.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SubForm\SubForm_ProcInit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SubForm\SubForm_ProcInit.Designer.cs">
+      <DependentUpon>SubForm_ProcInit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SubForm\SubForm_Product.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SubForm\SubForm_Product.Designer.cs">
+      <DependentUpon>SubForm_Product.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SubForm\SubForm_StageManual.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SubForm\SubForm_StageManual.Designer.cs">
+      <DependentUpon>SubForm_StageManual.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SubForm\SubForm_TenKey.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SubForm\SubForm_TenKey.designer.cs">
+      <DependentUpon>SubForm_TenKey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SubForm\SubForm_Time.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SubForm\SubForm_Time.Designer.cs">
+      <DependentUpon>SubForm_Time.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SubForm\SubForm_Warning.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SubForm\SubForm_Warning.Designer.cs">
+      <DependentUpon>SubForm_Warning.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Page\ManualForm\Form_Manual.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Page\ManualForm\Form_Manual.Designer.cs">
+      <DependentUpon>Form_Manual.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Pane\Form_PaneBottom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Pane\Form_PaneBottom.Designer.cs">
+      <DependentUpon>Form_PaneBottom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Pane\Form_PaneMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Pane\Form_PaneMenu.Designer.cs">
+      <DependentUpon>Form_PaneMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Pane\Form_PaneTop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Pane\Form_PaneTop.Designer.cs">
+      <DependentUpon>Form_PaneTop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\Popup\Form_SelectMode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Popup\Form_SelectMode.Designer.cs">
+      <DependentUpon>Form_SelectMode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SubForm\SubForm_Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SubForm\SubForm_Login.designer.cs">
+      <DependentUpon>SubForm_Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Page\TeachingForm\Form_Teaching.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Page\TeachingForm\Form_Teaching.Designer.cs">
+      <DependentUpon>Form_Teaching.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\AlarmUtil.cs" />
+    <Compile Include="Utils\Form\SubForm_Alarm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utils\Form\SubForm_Alarm.Designer.cs">
+      <DependentUpon>SubForm_Alarm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\Form\SubForm_Alarm2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utils\Form\SubForm_Alarm2.designer.cs">
+      <DependentUpon>SubForm_Alarm2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\LogUtil.cs" />
+    <Compile Include="Utils\ProcLogUtil.cs" />
+    <Compile Include="Utils\Util.cs" />
+    <Compile Include="Vision.cs" />
+    <Compile Include="Vision\CameraCalibration.cs" />
+    <Compile Include="Vision\CameraControl.cs" />
+    <Compile Include="Vision\Inspection.cs" />
+    <Compile Include="Vision\InspectionRcp.cs" />
+    <EmbeddedResource Include="UI\Page\autoForm\Form_Auto.resx">
+      <DependentUpon>Form_Auto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Page\autoForm\tabNetworkAuto.resx">
+      <DependentUpon>tabNetworkAuto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Page\autoForm\tabSummaryAuto.resx">
+      <DependentUpon>tabSummaryAuto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Page\autoForm\tabVisionAuto.resx">
+      <DependentUpon>tabVisionAuto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Page\DataForm\Form_Data2.resx">
+      <DependentUpon>Form_Data2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Page\DataForm\tabCalibrationData.resx">
+      <DependentUpon>tabCalibrationData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Page\DataForm\tabModelData.resx">
+      <DependentUpon>tabModelData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Page\DataForm\tabOptionData.resx">
+      <DependentUpon>tabOptionData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Page\DataForm\tabParameterData.resx">
+      <DependentUpon>tabParameterData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Page\DataForm\tabRegisterData.resx">
+      <DependentUpon>tabRegisterData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Page\DataForm\tabSoftLimitData.resx">
+      <DependentUpon>tabSoftLimitData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Page\DataForm\tabVisionProp.resx">
+      <DependentUpon>tabVisionProp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Page\LogForm\Form_Log.resx">
+      <DependentUpon>Form_Log.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Page\LogForm\tabBarcodeLog.resx">
+      <DependentUpon>tabBarcodeLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Page\LogForm\tabEDMLog.resx">
+      <DependentUpon>tabEDMLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Page\LogForm\tabErrorLog.resx">
+      <DependentUpon>tabErrorLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Page\LogForm\tabInspectionLog.resx">
+      <DependentUpon>tabInspectionLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Page\LogForm\tabDataLog.resx">
+      <DependentUpon>tabDataLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Page\LogForm\tabSystemLog.resx">
+      <DependentUpon>tabSystemLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Page\ManualForm\tabAssemblerManu3.resx">
+      <DependentUpon>tabAssemblerManu3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Page\ManualForm\tabJigInOutManu3.resx">
+      <DependentUpon>tabJigInOutManu3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Page\ManualForm\tabLeftBufferManu3.resx">
+      <DependentUpon>tabLeftBufferManu3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Page\ManualForm\tabProdLoaderManu3.resx">
+      <DependentUpon>tabProdLoaderManu3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Page\ManualForm\tabRightBufferManu3.resx">
+      <DependentUpon>tabRightBufferManu3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Page\ManualForm\tabTrayInOutManu3.resx">
+      <DependentUpon>tabTrayInOutManu3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Page\ManualForm\tabVisionManuProp.resx">
+      <DependentUpon>tabVisionManuProp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Page\TeachingForm\tabAssemblerTeach.resx">
+      <DependentUpon>tabAssemblerTeach.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Page\TeachingForm\tabBufferTeach2.resx">
+      <DependentUpon>tabBufferTeach2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Page\TeachingForm\tabJigTeach.resx">
+      <DependentUpon>tabJigTeach.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Page\TeachingForm\tabProdLoaderPickerCalib.resx">
+      <DependentUpon>tabProdLoaderPickerCalib.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Page\TeachingForm\tabCalMapControl.resx">
+      <DependentUpon>tabCalMapControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Page\TeachingForm\tabCalPointDetail.resx">
+      <DependentUpon>tabCalPointDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Page\TeachingForm\tabOffsetTeach.resx">
+      <DependentUpon>tabOffsetTeach.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Page\TeachingForm\tabAssemblerJigCalib.resx">
+      <DependentUpon>tabAssemblerJigCalib.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Page\TeachingForm\tabAssemblerUnderCalib.resx">
+      <DependentUpon>tabAssemblerUnderCalib.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Page\DataForm\tabWorkTimeData.resx">
+      <DependentUpon>tabWorkTimeData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Page\TeachingForm\tabProdLoaderTeach.resx">
+      <DependentUpon>tabProdLoaderTeach.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Page\TeachingForm\tabProdLoaderTrayCalib.resx">
+      <DependentUpon>tabProdLoaderTrayCalib.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Page\TeachingForm\tabTrayTeach.resx">
+      <DependentUpon>tabTrayTeach.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Pane\Form_PaneAlignDisplay.resx">
+      <DependentUpon>Form_PaneAlignDisplay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Pane\Form_PanePickerJog.resx">
+      <DependentUpon>Form_PanePickerJog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Popup\Form_Initialize2.resx">
+      <DependentUpon>Form_Initialize2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Popup\Form_InitState.resx">
+      <DependentUpon>Form_InitState.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Popup\Form_InitState2.resx">
+      <DependentUpon>Form_InitState2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Popup\Form_IOMonitor.resx">
+      <DependentUpon>Form_IOMonitor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Popup\Form_Origin2.resx">
+      <DependentUpon>Form_Origin2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Popup\Form_ProcessView.resx">
+      <DependentUpon>Form_ProcessView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Popup\Form_ProductInfo2.resx">
+      <DependentUpon>Form_ProductInfo2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SubForm\SubForm_CycleStop.resx">
+      <DependentUpon>SubForm_CycleStop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SubForm\SubForm_GripManual.resx">
+      <DependentUpon>SubForm_GripManual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SubForm\SubForm_InputText.resx">
+      <DependentUpon>SubForm_InputText.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SubForm\SubForm_Loading.resx">
+      <DependentUpon>SubForm_Loading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SubForm\SubForm_ProcInit.resx">
+      <DependentUpon>SubForm_ProcInit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SubForm\SubForm_Product.resx">
+      <DependentUpon>SubForm_Product.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SubForm\SubForm_StageManual.resx">
+      <DependentUpon>SubForm_StageManual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SubForm\SubForm_TenKey.resx">
+      <DependentUpon>SubForm_TenKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SubForm\SubForm_Time.resx">
+      <DependentUpon>SubForm_Time.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SubForm\SubForm_Warning.resx">
+      <DependentUpon>SubForm_Warning.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Page\ManualForm\Form_Manual.resx">
+      <DependentUpon>Form_Manual.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Pane\Form_PaneBottom.resx">
+      <DependentUpon>Form_PaneBottom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Pane\Form_PaneMenu.resx">
+      <DependentUpon>Form_PaneMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Pane\Form_PaneTop.resx">
+      <DependentUpon>Form_PaneTop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Popup\Form_SelectMode.resx">
+      <DependentUpon>Form_SelectMode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SubForm\SubForm_Login.resx">
+      <DependentUpon>SubForm_Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Page\TeachingForm\Form_Teaching.resx">
+      <DependentUpon>Form_Teaching.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utils\Form\SubForm_Alarm.resx">
+      <DependentUpon>SubForm_Alarm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utils\Form\SubForm_Alarm2.resx">
+      <DependentUpon>SubForm_Alarm2.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2%28x86 및 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_Button_Default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_IO_Input_Default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_IO_Input_ON.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_IO_Output_Click.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_IO_Output_Click_Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_IO_Output_Default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_IO_Output_Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_Mainform_AutoTab_Model.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_Mainform_AutoTab_Test Name.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_MainForm_ManualTab_Click.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_MainForm_ManualTab_Click_Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_MainForm_ManualTab_Default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_MainForm_ManualTab_Default_Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_Mainfrom_TeachingTab_Save_Click.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_Mainfrom_TeachingTab_Save_Default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_Mainfrom_TeachingTab_Save_Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_MainUI_Common_Button_Click.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_MainUI_Common_Button_Default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_MainUI_Common_Button_Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_MainUI_Common_Button_Main_Click.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_MainUI_Common_Button_Main_Default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_MainUI_Common_Button_Main_Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_MainUI_Common_Button_On.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_MainUI_Common_Button_On_Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_MainUI_Common_Check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_MainUI_Common_Check_Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_MainUI_Common_UnCheck.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_MainUI_Common_UnCheck_Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_MainUI_Stop_Default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_MainUI_Stop_Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_MainUI_StopOff_Default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_MainUI_StopOff_Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_MainUI_Tact_Time_Avg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_MainUI_Tact_Time_Sec.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_MainUI_Total_Count.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_SubUI_Login_Button_Click.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_SubUI_Login_Button_Default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_SubUI_Login_Button_Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_SubUI_Login_Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_SubUI_Login_Password.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_SubUI_Origin_Click.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_SubUI_Origin_Click1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_SubUI_Origin_Default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_SubUI_Origin_Default1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_SubUI_Origin_Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_SubUI_Origin_Hover1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_SubUI_Output_Index1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_SubUI_Output_Index2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_SubUI_Output_Index3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_SubUI_Output_Index4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_SubUI_Output_Index5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_SubUI_Output_Index6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_SubUI_SysClose_Click.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_SubUI_SysClose_Default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_SubUI_SysClose_Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_SubUI_Title_InitList.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_SubUI_Title_InitState.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_SubUI_Title_Input IO.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_SubUI_Title_IOMonitoring.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_SubUI_Title_Log.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_SubUI_Title_LOGIN.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_SubUI_Title_Origin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_SubUI_Title_Output IO.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_SubUI_Title_ProductInfo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_SubUI_Title_SelectMode.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_SubUI_Title_UnitInitialize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_SubUl_Modify_Cilck.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_SubUl_Modify_Default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_SubUl_Modify_Default_Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_TactTime.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NA.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="C:\FA\bin\AxInterop.CognexDisplay.dll" />
+    <Analyzer Include="dll\IOboardModule.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_Click_Resource.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_Default_Resource.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_GREEN_Click_Resource.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_GREEN_Default_Resource.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_GREEN_Hover_Resource.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_Hover_Resource.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_OP_Off_Default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_OP_Off_Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_TT_Paddingless.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_Symbol_Output.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NV_Symbol_Input.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Loading.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Loading_ComFAS.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WARNING_EMGSTOP.jpg" />
+    <None Include="Resources\WARNING_DOOR.jpg" />
+    <None Include="Resources\WARNING_LIGHTCURTAIN.jpg" />
+    <None Include="Resources\Title Network.png" />
+    <None Include="Resources\Title.Network.png" />
+    <None Include="Resources\Button\IO.Disable.png" />
+    <None Include="Resources\NV_ETC_Exit_Click.png" />
+    <None Include="Resources\NV_ETC_Exit_Default.png" />
+    <None Include="Resources\NV_ETC_Exit_Hover.png" />
+    <None Include="Resources\MAIN_UW.jpg" />
+    <None Include="Resources\camera_normal_dark.png" />
+    <None Include="Resources\camera_normal_light.png" />
+    <None Include="Resources\camera_selected.png" />
+    <None Include="Resources\Front Tray Left Image.png" />
+    <None Include="Resources\Label\Disable.png" />
+    <None Include="Resources\Label\NRed.Default.png" />
+    <None Include="Resources\Label\arrow_down.png" />
+    <None Include="Resources\Label\arrow_left.png" />
+    <None Include="Resources\Label\arrow_right.png" />
+    <None Include="Resources\Label\arrow_up.png" />
+    <None Include="Resources\Machine\MAIN_UW_Auto.jpg" />
+    <None Include="Resources\Label\SubTitle.png" />
+    <None Include="Resources\Button\Home.Click.png" />
+    <None Include="Resources\Button\Home.Default.png" />
+    <None Include="Resources\Button\Home.HOver.png" />
+    <None Include="Resources\Button\Start.Disable.png" />
+    <None Include="Resources\Button\StopDisable.png" />
+    <None Include="Resources\Button\Stop.Default.png" />
+    <None Include="Resources\Button\Product.Click_NoPoint.png" />
+    <None Include="Resources\Button\Product.Default_NoPoint.png" />
+    <None Include="Resources\Button\Product.HOver_NoPoint.png" />
+    <None Include="Resources\NV_SubTitle.png" />
+    <None Include="Resources\Button\Start.Click.png" />
+    <None Include="Resources\Button\Stop.Click.png" />
+    <Content Include="Resources\Status\LED.Gray.PNG" />
+    <Content Include="Resources\Status\LED.Green.PNG" />
+    <Content Include="Resources\Status\LED.Red.PNG" />
+    <Content Include="Resources\Set_Horizontal.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TSCognex\TSCognex.csproj">
+      <Project>{210290f8-4484-4d35-8b9a-4a847dacad73}</Project>
+      <Name>TSCognex</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TSControls\TSControls.csproj">
+      <Project>{a338bf74-c325-4994-9523-9885e924a790}</Project>
+      <Name>TSControls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TSDaraeLight\TSDaraeLight.csproj">
+      <Project>{7cd3bb10-794b-4899-a2c6-f7b7e9d024fe}</Project>
+      <Name>TSDaraeLight</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TSHikrobot\TSHikrobot.csproj">
+      <Project>{03361d8b-4f9c-4d4b-a624-39e6a4e0d50b}</Project>
+      <Name>TSHikrobot</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TSQRReader\TSQRReader.csproj">
+      <Project>{a6bd1ba9-8685-479b-8888-0826e6935993}</Project>
+      <Name>TSQRReader</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TSUtil\TSUtil.csproj">
+      <Project>{5e24ab57-b1fc-4da7-a4ca-1d55999386fd}</Project>
+      <Name>TSUtil</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TSVision\TSVision.csproj">
+      <Project>{6ed8df7d-aa8c-4750-8d70-b9960e73cead}</Project>
+      <Name>TSVision</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

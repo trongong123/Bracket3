@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A338BF74-C325-4994-9523-9885E924A790}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>TopEng.Controls</RootNamespace>
+    <AssemblyName>TSControls</AssemblyName>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>C:\FA\Bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AxisOrigin.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AxisOrigin.designer.cs">
+      <DependentUpon>AxisOrigin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AxisOrigin2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AxisOrigin2.designer.cs">
+      <DependentUpon>AxisOrigin2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ButtonEnh.cs">
+      <CustomToolNamespace>TopEng.Controls</CustomToolNamespace>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ButtonEnh.Designer.cs">
+      <DependentUpon>ButtonEnh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dlg_MessageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dlg_MessageBox.designer.cs">
+      <DependentUpon>Dlg_MessageBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProcessPictureBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ProcessPictureBox.designer.cs">
+      <DependentUpon>ProcessPictureBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductCountValueV.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ProductCountValueV.Designer.cs">
+      <DependentUpon>ProductCountValueV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductCountValueH.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ProductCountValueH.Designer.cs">
+      <DependentUpon>ProductCountValueH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductInfoJIG.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ProductInfoJIG.Designer.cs">
+      <DependentUpon>ProductInfoJIG.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="TeachingInputValue.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TeachingInputValue.designer.cs">
+      <DependentUpon>TeachingInputValue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TextBoxFreeSize.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AxisOrigin.resx">
+      <DependentUpon>AxisOrigin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AxisOrigin2.resx">
+      <DependentUpon>AxisOrigin2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dlg_MessageBox.resx">
+      <DependentUpon>Dlg_MessageBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProcessPictureBox.resx">
+      <DependentUpon>ProcessPictureBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductCountValueV.resx">
+      <DependentUpon>ProductCountValueV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductCountValueH.resx">
+      <DependentUpon>ProductCountValueH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductInfoJIG.resx">
+      <DependentUpon>ProductInfoJIG.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TeachingInputValue.resx">
+      <DependentUpon>TeachingInputValue.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\NV_Title_Fail.png" />
+    <Content Include="Resources\NV_Title_FailRate.png" />
+    <Content Include="Resources\NV_Title_Pass.png" />
+    <Content Include="Resources\NV_Title_Time.png" />
+    <Content Include="Resources\NV_Title_Total.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
