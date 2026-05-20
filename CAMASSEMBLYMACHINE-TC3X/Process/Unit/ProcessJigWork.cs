@@ -70,11 +70,20 @@ namespace CAMASSEMBLYMACHINE.Process
             IF_UNLOADING_COMPLETE_CHECK,
 
             IF_PLACE_WAIT_EDM_REPORT,
+            JIG_IN_BUF_Z_READY_WAIT,
             IF_PLACE_POSSIBLE_WAIT,
             IF_PLACE_BUSY,
             IF_PLACE_COMPLETE_CHECK,
-			
-			// VISION
+            JIG_IN_BUF_Z_PRESS_MOVE,
+            JIG_IN_BUF_Z_PRESS_MOVE_CHECK,
+            JIG_ALIGN_PRESS_DOWN,
+            JIG_ALIGN_PRESS_DOWN_CHECK,
+            JIG_ALIGN_PRESS_UP,
+            JIG_ALIGN_PRESS_UP_CHECK,
+            JIG_IN_BUF_Z_READY_MOVE,
+            JIG_IN_BUF_Z_READY_MOVE_CHECK,
+
+            // VISION
             REQUEST_VISIOTN_ALIGN,
             REQUEST_VISIOTN_ALIGN_CHECK,
             LIGHT_OFF,
@@ -381,7 +390,11 @@ namespace CAMASSEMBLYMACHINE.Process
                     var processInit = new List<STEP>()
                     {
                         STEP.LIGHT_OFF,
-						STEP.PALETTE_UNLOCK,
+                        STEP.JIG_ALIGN_PRESS_UP,
+                        STEP.JIG_ALIGN_PRESS_UP_CHECK,
+                        STEP.JIG_IN_BUF_Z_READY_MOVE,
+                        STEP.JIG_IN_BUF_Z_READY_MOVE_CHECK,
+                        STEP.PALETTE_UNLOCK,
                         STEP.CONV_RUN,
                         STEP.CONV_STOP_INIT_WITH_DELAY,
                         STEP.INIT_PRODUCT_DATA_MISMATCH_CHECK,
@@ -436,9 +449,18 @@ namespace CAMASSEMBLYMACHINE.Process
                     var processPlace = new List<STEP>()
                     {
                         STEP.IF_PLACE_WAIT_EDM_REPORT,
+                        STEP.JIG_IN_BUF_Z_READY_WAIT,
                         STEP.IF_PLACE_POSSIBLE_WAIT,
                         STEP.IF_PLACE_BUSY,
                         STEP.IF_PLACE_COMPLETE_CHECK,
+                        STEP.JIG_IN_BUF_Z_PRESS_MOVE,
+                        STEP.JIG_IN_BUF_Z_PRESS_MOVE_CHECK,
+                        STEP.JIG_ALIGN_PRESS_DOWN,
+                        STEP.JIG_ALIGN_PRESS_DOWN_CHECK,
+                        STEP.JIG_ALIGN_PRESS_UP,
+                        STEP.JIG_ALIGN_PRESS_UP_CHECK,
+                        STEP.JIG_IN_BUF_Z_READY_MOVE,
+                        STEP.JIG_IN_BUF_Z_READY_MOVE_CHECK,
                         STEP.IDLE,
                     };
 
@@ -1026,6 +1048,12 @@ namespace CAMASSEMBLYMACHINE.Process
                     NextStep();
                     break;
 
+                case STEP.JIG_IN_BUF_Z_READY_WAIT:
+                    if (!Util.IsAxisInPos((AXIS.JIG_IN_BUF_Z, Machine.param.Position(ParameterDefine.POSITION.JIG_IN_BUF_Z_READY_POS))))
+                        break;
+                    NextStep();
+                    break;
+
                 case STEP.IF_PLACE_POSSIBLE_WAIT:
                     resumeStepIndex = StepIndex;
 
@@ -1061,9 +1089,36 @@ namespace CAMASSEMBLYMACHINE.Process
                     Machine.Parts[CURRENT_PARTS[targetPick]].loading = false;
                     Machine.Parts[CURRENT_PARTS[targetPick]].exist = true;
 
-                    NextStep();
+                    if (Machine.Parts[(int)UNITPART.JIG1].exist && Machine.Parts[(int)UNITPART.JIG2].exist)
+                        NextStep();
+                    else
+                        Step = STEP.IDLE;
 
                     resumeStepIndex = StepIndex;
+                    break;
+
+                case STEP.JIG_IN_BUF_Z_PRESS_MOVE_CHECK:
+                    if (!Machine.motion.MoveAxisDoneCheck((int)AXIS.JIG_IN_BUF_Z))
+                        break;
+                    NextStep();
+                    break;
+
+                case STEP.JIG_ALIGN_PRESS_DOWN_CHECK:
+                    Machine.IO.GetIn((int)DI.JIG_ALIGN_PRESS_DOWN, ref returnCurrent);
+                    if (returnCurrent != 1) break;
+                    NextStep();
+                    break;
+
+                case STEP.JIG_ALIGN_PRESS_UP_CHECK:
+                    Machine.IO.GetIn((int)DI.JIG_ALIGN_PRESS_UP, ref returnCurrent);
+                    if (returnCurrent != 1) break;
+                    NextStep();
+                    break;
+
+                case STEP.JIG_IN_BUF_Z_READY_MOVE_CHECK:
+                    if (!Machine.motion.MoveAxisDoneCheck((int)AXIS.JIG_IN_BUF_Z))
+                        break;
+                    NextStep();
                     break;
             }
         }
@@ -1096,6 +1151,25 @@ namespace CAMASSEMBLYMACHINE.Process
                     Machine.IO.SetOut((int)DO.JIG_WORK_CONV_RUN, 0);
                     NextStep();
                     timeWait[(int)TIMER.DELAY].Start();
+                    break;
+
+                case STEP.JIG_IN_BUF_Z_PRESS_MOVE:
+                    if (Machine.Parts[(int)UNITPART.ASSEMBLER1].unloading || Machine.Parts[(int)UNITPART.ASSEMBLER2].unloading)
+                        break;
+                    Machine.motion.MoveAxisAbs((int)AXIS.JIG_IN_BUF_Z,
+                        1000 * Machine.param.Position(ParameterDefine.POSITION.JIG_IN_BUF_Z_PRESS_POS),
+                        Machine.param.Velocity(ParameterDefine.VELOCITY.JIG_Z_VEL),
+                        Machine.param.Velocity(ParameterDefine.VELOCITY.JIG_Z_ACC),
+                        Machine.param.Velocity(ParameterDefine.VELOCITY.JIG_Z_DEC));
+                    Step = STEP.JIG_IN_BUF_Z_PRESS_MOVE_CHECK;
+                    break;
+                case STEP.JIG_IN_BUF_Z_READY_MOVE:
+                    Machine.motion.MoveAxisAbs((int)AXIS.JIG_IN_BUF_Z,
+                        1000 * Machine.param.Position(ParameterDefine.POSITION.JIG_IN_BUF_Z_READY_POS),
+                        Machine.param.Velocity(ParameterDefine.VELOCITY.JIG_Z_VEL),
+                        Machine.param.Velocity(ParameterDefine.VELOCITY.JIG_Z_ACC),
+                        Machine.param.Velocity(ParameterDefine.VELOCITY.JIG_Z_DEC));
+                    Step = STEP.JIG_IN_BUF_Z_READY_MOVE_CHECK;
                     break;
             }
         }
@@ -1213,6 +1287,17 @@ namespace CAMASSEMBLYMACHINE.Process
 
                     if (ret1 == 0 && ret2 == 1)
                         NextStep();
+                    break;
+
+                case STEP.JIG_ALIGN_PRESS_DOWN:
+                    Machine.IO.SetOut((int)DO.JIG_ALIGN_PRESS_UP, 0);
+                    Machine.IO.SetOut((int)DO.JIG_ALIGN_PRESS_DOWN, 1);
+                    Step = STEP.JIG_ALIGN_PRESS_DOWN_CHECK;
+                    break;
+                case STEP.JIG_ALIGN_PRESS_UP:
+                    Machine.IO.SetOut((int)DO.JIG_ALIGN_PRESS_DOWN, 0);
+                    Machine.IO.SetOut((int)DO.JIG_ALIGN_PRESS_UP, 1);
+                    Step = STEP.JIG_ALIGN_PRESS_UP_CHECK;
                     break;
             }
         }

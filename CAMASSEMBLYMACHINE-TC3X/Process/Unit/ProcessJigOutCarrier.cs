@@ -701,13 +701,22 @@ namespace CAMASSEMBLYMACHINE.Process
                     break;
 
                 case STEP.IF_DOWNSTREAM_COMPLETE_CHECK:
-                    Machine.IO.GetIn((int)DI.IF_JIG_DOWNSTREAM_RUN_CHECK_CARRIER, ref returnRunning);
-                    bool isUnloadComplete =
-                        returnRunning == 0
-                        && !Machine.GetJigSignal(JIG_TYPE.UNDER_OUT, JIG_SENSOR.IN)
-                        && !Machine.GetJigSignal(JIG_TYPE.UNDER_OUT, JIG_SENSOR.OUT);
-                    // 더미런 시에는 항상 OFF 이다.
-                    if (Machine.status.mode == SystemMode.SystemModeDRYRUN) isUnloadComplete = true;
+                    bool isUnloadComplete;
+
+                    if (Machine.AloneMode)
+                    {
+                        isUnloadComplete = true;
+                    }
+                    else
+                    {
+                        Machine.IO.GetIn((int)DI.IF_JIG_DOWNSTREAM_RUN_CHECK_CARRIER, ref returnRunning);
+                        isUnloadComplete =
+                            returnRunning == 0
+                            && !Machine.GetJigSignal(JIG_TYPE.UNDER_OUT, JIG_SENSOR.IN)
+                            && !Machine.GetJigSignal(JIG_TYPE.UNDER_OUT, JIG_SENSOR.OUT);
+                        // 더미런 시에는 항상 OFF 이다.
+                        if (Machine.status.mode == SystemMode.SystemModeDRYRUN) isUnloadComplete = true;
+                    }
 
                     // DOWNSTREAM CONVEYOR STOP 시, returnRunning = 0
                     if (!isUnloadComplete)

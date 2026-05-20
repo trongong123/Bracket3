@@ -296,8 +296,8 @@ namespace CAMASSEMBLYMACHINE.Process
             //PEELING2_RETURN, PEELING2_TURN,
             //PEELING1_UNCLAMP, PEELING1_CLAMP,
             //PEELING2_UNCLAMP, PEELING2_CLAMP,
-            PEELING_BLOW,
-            DUST_SUCTION,
+            //PEELING_BLOW,
+            //DUST_SUCTION,
             IOOutMax,
         }
 
@@ -510,7 +510,7 @@ namespace CAMASSEMBLYMACHINE.Process
                         //STEP.PEELING_RETURN_BYPASS,
                         //STEP.PEELING_DOWN,
                         //STEP.TRF_PEELING_POS,
-                        STEP.LD_BUF_DETECT_OFF_CHECK,
+                        //STEP.LD_BUF_DETECT_OFF_CHECK,
                         STEP.IDLE,
                     };
 
@@ -859,7 +859,7 @@ namespace CAMASSEMBLYMACHINE.Process
                     break;
 
                 case AUTOSTEP.TRANSFER_LOAD_PRODUCT:
-                    if (!Machine.Parts[place1[0, unitNo]].exist && !Machine.Parts[place2[1, unitNo]].exist)
+                    if (!Machine.Parts[place1[0, unitNo]].exist || !Machine.Parts[place1[1, unitNo]].exist)
                         break;
                     if (Machine.prod_loader_start_place[unitNo]) break;
                     Machine.buffer_ready_to_place[unitNo] = false;
@@ -1298,6 +1298,11 @@ namespace CAMASSEMBLYMACHINE.Process
                     break;
 
                 case STEP.LD_BUF_DETECT_ON_CHECK:
+                    if (Machine.status.mode == SystemMode.SystemModeDRYRUN)
+                    {
+                        NextStep();
+                        break;
+                    }
                     Machine.IO.GetIn(inIo[(int)IOIn.DETACH1, unitNo], ref ret1);
                     Machine.IO.GetIn(inIo[(int)IOIn.DETACH2, unitNo], ref ret2);
 
@@ -1320,6 +1325,11 @@ namespace CAMASSEMBLYMACHINE.Process
                     break;
 
                 case STEP.LD_BUF_DETECT_OFF_CHECK:
+                    if (Machine.status.mode == SystemMode.SystemModeDRYRUN)
+                    {
+                        NextStep();
+                        break;
+                    }
                     Machine.IO.GetIn(inIo[(int)IOIn.DETACH1, unitNo], ref ret1);
                     Machine.IO.GetIn(inIo[(int)IOIn.DETACH2, unitNo], ref ret2);
 
@@ -1342,6 +1352,11 @@ namespace CAMASSEMBLYMACHINE.Process
                     break;
 
                 case STEP.ULD_BUF_DETECT_ON_CHECK:
+                    if (Machine.status.mode == SystemMode.SystemModeDRYRUN)
+                    {
+                        NextStep();
+                        break;
+                    }
                     Machine.IO.GetIn(inIo[(int)IOIn.DETACH3, unitNo], ref ret1);
                     Machine.IO.GetIn(inIo[(int)IOIn.DETACH4, unitNo], ref ret2);
 
@@ -1378,6 +1393,11 @@ namespace CAMASSEMBLYMACHINE.Process
                     break;
 
                 case STEP.ULD_BUF_DETECT_OFF_CHECK:
+                    if (Machine.status.mode == SystemMode.SystemModeDRYRUN)
+                    {
+                        NextStep();
+                        break;
+                    }
                     Machine.IO.GetIn(inIo[(int)IOIn.DETACH3, unitNo], ref ret1);
                     Machine.IO.GetIn(inIo[(int)IOIn.DETACH4, unitNo], ref ret2);
 

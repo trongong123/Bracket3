@@ -918,7 +918,7 @@ namespace CAMASSEMBLYMACHINE.Define
             /*[0x71]*/
             JIG_WORK2_PALLET_LOCK_BWD,
             /*[0x72]*/
-            IG_ALIGN_PRESS_UP,
+            JIG_ALIGN_PRESS_UP,
             /*[0x73]*/
             JIG_ALIGN_PRESS_DOWN,
             /*[0x74]*/

@@ -44,6 +44,8 @@ namespace CAMASSEMBLYMACHINE.Define
             ASSEMBLER_Y_NG_BOX_RIGHT_POS,
             ASSEMBLER_R_NG_BOX_RIGHT_POS,
 
+            JIG_IN_BUF_Z_READY_POS,
+            JIG_IN_BUF_Z_PRESS_POS,
 
             POSITION_MAX_COUNT
         }

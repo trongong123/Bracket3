@@ -75,6 +75,18 @@ namespace CAMASSEMBLYMACHINE.Process
             STOPPER_UP_CHECK,
             STOPPER_DOWN,
             STOPPER_DOWN_CHECK,
+
+            JIG_WORK2_FWD,
+            JIG_WORK2_FWD_CHECK,
+
+            JIG_WORK2_BWD,
+            JIG_WORK2_BWD_CHECK,
+
+            JIG_ASSEMBLER_UP,
+            JIG_ASSEMBLER_UP_CHECK,
+            JIG_ASSEMBLER_DOWN,
+            JIG_ASSEMBLER_DOWN_CHECK,
+
             INIT_STOPPER_UP,
         }
 
@@ -261,6 +273,10 @@ namespace CAMASSEMBLYMACHINE.Process
                         STEP.IF_LOADING_BUSY,
                         STEP.IF_LOADING_COMPLETE_CHECK,
                         STEP.CONV_STOP_WITH_DELAY,
+                        STEP.JIG_WORK2_FWD,
+                        STEP.JIG_WORK2_FWD_CHECK,
+                        STEP.JIG_ASSEMBLER_DOWN,
+                        STEP.JIG_ASSEMBLER_DOWN_CHECK,
                         STEP.IDLE,
                     };
 
@@ -276,6 +292,10 @@ namespace CAMASSEMBLYMACHINE.Process
                         STEP.IF_JIG_ULD_EXIST_ON, // 개발PGM Detect Out 센서 역할
                         STEP.IF_DOWNSTREAM_EDM_REPORT,
                         STEP.IF_DOWNSTREAM_RUN_CHECK,
+                        STEP.JIG_ASSEMBLER_UP,
+                        STEP.JIG_ASSEMBLER_UP_CHECK,
+                        STEP.JIG_WORK2_BWD,
+                        STEP.JIG_WORK2_BWD_CHECK,
                         STEP.STOPPER_DOWN,
                         STEP.CONV_RUN,
                         STEP.IF_CONV_RUN_ON,
@@ -699,14 +719,23 @@ namespace CAMASSEMBLYMACHINE.Process
                     break;
 
                 case STEP.IF_DOWNSTREAM_COMPLETE_CHECK:
-                    Machine.IO.GetIn((int)DI.IF_JIG_DOWNSTREAM_RUN_CHECK_WORK, ref returnRunning);
-                    bool isUnloadComplete =
-                       returnRunning == 0
-                       && !Machine.GetJigSignal(JIG_TYPE.TOP_OUT, JIG_SENSOR.IN)
-                       && !Machine.GetJigSignal(JIG_TYPE.TOP_OUT, JIG_SENSOR.OUT);
+                    bool isUnloadComplete;
 
-                    // 더미런 시에는 항상 OFF 이다.
-                    if (Machine.status.mode == SystemMode.SystemModeDRYRUN) isUnloadComplete = true;
+                    if (Machine.AloneMode)
+                    {
+                        isUnloadComplete = true;
+                    }
+                    else
+                    {
+                        Machine.IO.GetIn((int)DI.IF_JIG_DOWNSTREAM_RUN_CHECK_WORK, ref returnRunning);
+                        isUnloadComplete =
+                           returnRunning == 0
+                           && !Machine.GetJigSignal(JIG_TYPE.TOP_OUT, JIG_SENSOR.IN)
+                           && !Machine.GetJigSignal(JIG_TYPE.TOP_OUT, JIG_SENSOR.OUT);
+
+                        // 더미런 시에는 항상 OFF 이다.
+                        if (Machine.status.mode == SystemMode.SystemModeDRYRUN) isUnloadComplete = true;
+                    }
 
                     // Next CONVEYOR STOP 시, returnRunning = 0
                     if (!isUnloadComplete)
@@ -822,6 +851,104 @@ namespace CAMASSEMBLYMACHINE.Process
 
                     Machine.IO.GetIn((int)DI.JIG_OUT_STOPPER_UP, ref ret1);
                     Machine.IO.GetIn((int)DI.JIG_OUT_STOPPER_DOWN, ref ret2);
+
+                    if (ret1 == 0 && ret2 == 1)
+                        NextStep();
+                    break;
+
+                case STEP.JIG_WORK2_BWD:
+                    resumeStepIndex = StepIndex;
+
+                    Machine.IO.SetOut((int)DO.JIG_WORK2_PALLET_LOCK_BWD, 1);
+                    Machine.IO.SetOut((int)DO.JIG_WORK2_PALLET_LOCK_FWD, 0);
+
+                    Step = STEP.STOPPER_DOWN_CHECK;
+                    timeWait[(int)TIMER.TIMEOUT].Start();
+                    timeWait[(int)TIMER.DELAY].Start();
+                    break;
+
+                case STEP.JIG_WORK2_BWD_CHECK:
+                    if (timeWait[(int)TIMER.TIMEOUT].Elapsed > Machine.param.Time(ParameterDefine.TIME.CYLINDER_TIME_OUT))
+                    {
+                        SetError(ECODE.TIMEOUT_JIG_OUTBUF_STOPPER_DOWN);
+                        break;
+                    }
+
+                    Machine.IO.GetIn((int)DI.JIG_WORK_2_PALLET_LOCK_BWD, ref ret1);
+                    Machine.IO.GetIn((int)DI.JIG_WORK_2_PALLET_LOCK_FWD, ref ret2);
+
+                    if (ret1 == 1 && ret2 == 0)
+                        NextStep();
+                    break;
+
+                case STEP.JIG_WORK2_FWD:
+                    resumeStepIndex = StepIndex;
+
+                    Machine.IO.SetOut((int)DO.JIG_WORK2_PALLET_LOCK_BWD, 0);
+                    Machine.IO.SetOut((int)DO.JIG_WORK2_PALLET_LOCK_FWD, 1);
+
+                    Step = STEP.STOPPER_DOWN_CHECK;
+                    timeWait[(int)TIMER.TIMEOUT].Start();
+                    timeWait[(int)TIMER.DELAY].Start();
+                    break;
+
+                case STEP.JIG_WORK2_FWD_CHECK:
+                    if (timeWait[(int)TIMER.TIMEOUT].Elapsed > Machine.param.Time(ParameterDefine.TIME.CYLINDER_TIME_OUT))
+                    {
+                        SetError(ECODE.TIMEOUT_JIG_OUTBUF_STOPPER_DOWN);
+                        break;
+                    }
+
+                    Machine.IO.GetIn((int)DI.JIG_WORK_2_PALLET_LOCK_BWD, ref ret1);
+                    Machine.IO.GetIn((int)DI.JIG_WORK_2_PALLET_LOCK_FWD, ref ret2);
+
+                    if (ret1 == 0 && ret2 == 1)
+                        NextStep();
+                    break;
+                case STEP.JIG_ASSEMBLER_DOWN:
+                    resumeStepIndex = StepIndex;
+
+                    Machine.IO.SetOut((int)DO.JIG_ASSEMBLE_PRESS_DOWN, 1);
+                    Machine.IO.SetOut((int)DO.JIG_ASSEMBLE_PRESS_UP, 0);
+
+                    Step = STEP.STOPPER_DOWN_CHECK;
+                    timeWait[(int)TIMER.TIMEOUT].Start();
+                    timeWait[(int)TIMER.DELAY].Start();
+                    break;
+
+                case STEP.JIG_ASSEMBLER_DOWN_CHECK:
+                    if (timeWait[(int)TIMER.TIMEOUT].Elapsed > Machine.param.Time(ParameterDefine.TIME.CYLINDER_TIME_OUT))
+                    {
+                        SetError(ECODE.TIMEOUT_JIG_OUTBUF_STOPPER_DOWN);
+                        break;
+                    }
+
+                    Machine.IO.GetIn((int)DI.JIG_ASSEMBLE_PRESS_DOWN, ref ret1);
+                    Machine.IO.GetIn((int)DI.JIG_ASSEMBLE_PRESS_UP, ref ret2);
+
+                    if (ret1 == 1 && ret2 == 0)
+                        NextStep();
+                    break;
+                case STEP.JIG_ASSEMBLER_UP:
+                    resumeStepIndex = StepIndex;
+
+                    Machine.IO.SetOut((int)DO.JIG_ASSEMBLE_PRESS_DOWN, 0);
+                    Machine.IO.SetOut((int)DO.JIG_ASSEMBLE_PRESS_UP, 1);
+
+                    Step = STEP.STOPPER_DOWN_CHECK;
+                    timeWait[(int)TIMER.TIMEOUT].Start();
+                    timeWait[(int)TIMER.DELAY].Start();
+                    break;
+
+                case STEP.JIG_ASSEMBLER_UP_CHECK:
+                    if (timeWait[(int)TIMER.TIMEOUT].Elapsed > Machine.param.Time(ParameterDefine.TIME.CYLINDER_TIME_OUT))
+                    {
+                        SetError(ECODE.TIMEOUT_JIG_OUTBUF_STOPPER_DOWN);
+                        break;
+                    }
+
+                    Machine.IO.GetIn((int)DI.JIG_ASSEMBLE_PRESS_DOWN, ref ret1);
+                    Machine.IO.GetIn((int)DI.JIG_ASSEMBLE_PRESS_UP, ref ret2);
 
                     if (ret1 == 0 && ret2 == 1)
                         NextStep();
