@@ -364,6 +364,7 @@ namespace CAMASSEMBLYMACHINE.Process
         public int[] alignSucs = { -1, -1 };
         private int iAlignErrorCheckCount = 0;
         private int iRetryVision = 0;
+        private int nextBufferPlaceTarget = 0;
 
         Point2d currCalibrationPos = new Point2d();
         int pickRetryCount;
@@ -971,10 +972,10 @@ namespace CAMASSEMBLYMACHINE.Process
                         Machine.IO.GetIn((int)DI.CAM_PICKER_Z2_VACON, ref ret1);
                         Machine.Parts[(int)UNITPART.PROD_PICK2].exist = Convert.ToBoolean(ret1);
 
-                        Machine.IO.GetIn((int)DI.DETACH_SENSOR_1, ref ret1);
+                        Machine.IO.GetIn((int)DI.CAM_TRF_L1_DETECT_ON, ref ret1);
                         Machine.Parts[(int)UNITPART.BUF1_L1].exist = Convert.ToBoolean(ret1);
                         Thread.Sleep(300);
-                        Machine.IO.GetIn((int)DI.DETACH_SENSOR_3, ref ret2);
+                        Machine.IO.GetIn((int)DI.CAM_TRF_L2_DETECT_ON, ref ret2);
                         Machine.Parts[(int)UNITPART.BUF1_R1].exist = Convert.ToBoolean(ret2);
                         //if (ret1 == 0 || ret2 == 0)
                         //{
@@ -990,10 +991,10 @@ namespace CAMASSEMBLYMACHINE.Process
                         //    }
                         //}
 
-                        Machine.IO.GetIn((int)DI.DETACH_SENSOR_2, ref ret1);
+                        Machine.IO.GetIn((int)DI.CAM_TRF_R1_DETECT_ON, ref ret1);
                         Machine.Parts[(int)UNITPART.BUF1_L2].exist = Convert.ToBoolean(ret1);
                         Thread.Sleep(300);
-                        Machine.IO.GetIn((int)DI.DETACH_SENSOR_4, ref ret2);
+                        Machine.IO.GetIn((int)DI.CAM_TRF_R2_DETECT_ON, ref ret2);
                         Machine.Parts[(int)UNITPART.BUF1_R2].exist = Convert.ToBoolean(ret2);
                         //if (ret1 == 0 || ret2 == 0)
                         //{
@@ -1358,9 +1359,16 @@ namespace CAMASSEMBLYMACHINE.Process
                     partInBufL += Machine.Parts[(int)UNITPART.BUF1_L2].exist ? 1 : 0;
                     partInBufR += Machine.Parts[(int)UNITPART.BUF1_R1].exist ? 1 : 0;
                     partInBufR += Machine.Parts[(int)UNITPART.BUF1_R2].exist ? 1 : 0;
-                    if (partInPicker == 1)
+                    bool canPlaceLeft = Machine.buffer_ready_to_place[(int)TOOL_TYPE.LEFT] && (partInPicker != 1 || partInBufL == 1);
+                    bool canPlaceRight = Machine.buffer_ready_to_place[(int)TOOL_TYPE.RIGHT] && (partInPicker != 1 || partInBufR == 1);
+
+                    if (canPlaceLeft || canPlaceRight)
                     {
-                        if (Machine.buffer_ready_to_place[(int)TOOL_TYPE.LEFT] && partInBufL == 1)
+                        if (canPlaceLeft && canPlaceRight) targetCurr = nextBufferPlaceTarget;
+                        else if (canPlaceLeft) targetCurr = 0;
+                        else targetCurr = 1;
+
+                        if (targetCurr == 0)
                         {
                             if (Machine.Parts[(int)UNITPART.BUF1_L1].exist && Machine.Parts[(int)UNITPART.PROD_PICK1].exist)
                             {
@@ -1370,10 +1378,8 @@ namespace CAMASSEMBLYMACHINE.Process
                             {
                                 SetError(ECODE.TIMEOUT_BUF1_L2_DETECT); return;
                             }
-                            targetCurr = 0;
-                            Machine.prod_loader_start_place[targetCurr] = true;
                         }
-                        else if (Machine.buffer_ready_to_place[(int)TOOL_TYPE.RIGHT] && partInBufR == 1)
+                        else
                         {
                             if (Machine.Parts[(int)UNITPART.BUF1_R1].exist && Machine.Parts[(int)UNITPART.PROD_PICK1].exist)
                             {
@@ -1383,35 +1389,9 @@ namespace CAMASSEMBLYMACHINE.Process
                             {
                                 SetError(ECODE.TIMEOUT_BUF1_R2_DETECT); return;
                             }
-                            targetCurr = 1;
-                            Machine.prod_loader_start_place[targetCurr] = true;
                         }
-                        else break;
-                    }
-                    else if (Machine.buffer_ready_to_place[(int)TOOL_TYPE.LEFT])
-                    {
-                        if (Machine.Parts[(int)UNITPART.BUF1_L1].exist && Machine.Parts[(int)UNITPART.PROD_PICK1].exist)
-                        {
-                            SetError(ECODE.TIMEOUT_BUF1_L1_DETECT); return;
-                        }
-                        if (Machine.Parts[(int)UNITPART.BUF1_L2].exist && Machine.Parts[(int)UNITPART.PROD_PICK2].exist)
-                        {
-                            SetError(ECODE.TIMEOUT_BUF1_L2_DETECT); return;
-                        }
-                        targetCurr = 0;
-                        Machine.prod_loader_start_place[targetCurr] = true;
-                    }
-                    else if (Machine.buffer_ready_to_place[(int)TOOL_TYPE.RIGHT])
-                    {
-                        if (Machine.Parts[(int)UNITPART.BUF1_R1].exist && Machine.Parts[(int)UNITPART.PROD_PICK1].exist)
-                        {
-                            SetError(ECODE.TIMEOUT_BUF1_R1_DETECT); return;
-                        }
-                        if (Machine.Parts[(int)UNITPART.BUF1_R2].exist && Machine.Parts[(int)UNITPART.PROD_PICK2].exist)
-                        {
-                            SetError(ECODE.TIMEOUT_BUF1_R2_DETECT); return;
-                        }
-                        targetCurr = 1;
+
+                        nextBufferPlaceTarget = targetCurr == 0 ? 1 : 0;
                         Machine.prod_loader_start_place[targetCurr] = true;
                     }
                     else if (Machine.Parts[(int)UNITPART.BUF1_L1].loadingEnable) targetCurr = 0;
@@ -2103,6 +2083,7 @@ namespace CAMASSEMBLYMACHINE.Process
                 case STEP.PICKER_VACON:
                     if (Machine.status.mode == SystemMode.SystemModeDRYRUN)
                     {
+                        isVacOnComplete = true;
                         NextStep();
                         break;
                     }
@@ -2176,6 +2157,11 @@ namespace CAMASSEMBLYMACHINE.Process
                     break;
 
                 case STEP.PICKER_VACON_L:
+                    if (Machine.status.mode == SystemMode.SystemModeDRYRUN)
+                    {
+                        NextStep();
+                        break;
+                    }
                     Machine.IO.SetOut(outToolVac[0], 1);
                     Machine.IO.SetOut(outToolPurge[0], 0);
 
@@ -2184,6 +2170,11 @@ namespace CAMASSEMBLYMACHINE.Process
                     break;
 
                 case STEP.PICKER_VACON_L_CHECK:
+                    if (Machine.status.mode == SystemMode.SystemModeDRYRUN)
+                    {
+                        NextStep();
+                        break;
+                    }
                     if (timeWait[(int)TIMER.TIMEOUT].Elapsed > Machine.param.Time(ParameterDefine.TIME.VACUUM_ON_TIME_OUT))
                     {
                         SetError(ECODE.TIMEOUT_ASSY_PICK1_VACON);
@@ -2199,6 +2190,11 @@ namespace CAMASSEMBLYMACHINE.Process
                     break;
 
                 case STEP.PICKER_VACON_R:
+                    if (Machine.status.mode == SystemMode.SystemModeDRYRUN)
+                    {
+                        NextStep();
+                        break;
+                    }
                     Machine.IO.SetOut(outToolVac[1], 1);
                     Machine.IO.SetOut(outToolPurge[1], 0);
 
@@ -2207,6 +2203,11 @@ namespace CAMASSEMBLYMACHINE.Process
                     break;
 
                 case STEP.PICKER_VACON_R_CHECK:
+                    if (Machine.status.mode == SystemMode.SystemModeDRYRUN)
+                    {
+                        NextStep();
+                        break;
+                    }
                     if (timeWait[(int)TIMER.TIMEOUT].Elapsed > Machine.param.Time(ParameterDefine.TIME.VACUUM_ON_TIME_OUT))
                     {
                         SetError(ECODE.TIMEOUT_ASSY_PICK2_VACON);
@@ -2252,7 +2253,7 @@ namespace CAMASSEMBLYMACHINE.Process
                 case STEP.PICKER_VACOFF_R_CHECK:
                     Machine.IO.GetIn(outToolVac[1], ref ret1);
 
-                    if (ret1 == 0)
+                    if (ret1 == 0 || Machine.status.mode == SystemMode.SystemModeDRYRUN)
                     {
                         Util.Delay((int)Machine.param.Time(TIME.PURGE_OFF_WAIT_TIME));
 
@@ -2339,54 +2340,54 @@ namespace CAMASSEMBLYMACHINE.Process
                     {
                         NextStep(); break;
                     }
-                    if (targetCurr == 0)
-                    {
-                        Machine.IO.GetIn((int)DI.DETACH_SENSOR_1, ref ret1);
-                        Machine.IO.GetIn((int)DI.DETACH_SENSOR_2, ref ret2);
+                    //if (targetCurr == 0)
+                    //{
+                    //    Machine.IO.GetIn((int)DI.DETACH_SENSOR_1, ref ret1);
+                    //    Machine.IO.GetIn((int)DI.DETACH_SENSOR_2, ref ret2);
 
-                        if (ret1 == 1 && ret2 == 1)
-                            NextStep();
-                        else
-                        {
-                            if (timeWait[(int)TIMER.DELAY].Elapsed > Machine.param.Time(ParameterDefine.TIME.VACUUM_ON_TIME_OUT))
-                            {
-                                if (ret1 == 0)
-                                {
-                                    SetError(ECODE.TIMEOUT_BUF1_L1_DETECT);
-                                    break;
-                                }
-                                else
-                                {
-                                    SetError(ECODE.TIMEOUT_BUF1_L2_DETECT);
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                    else
-                    {
-                        Machine.IO.GetIn((int)DI.DETACH_SENSOR_3, ref ret1);
-                        Machine.IO.GetIn((int)DI.DETACH_SENSOR_4, ref ret2);
+                    //    if (ret1 == 1 && ret2 == 1)
+                    //        NextStep();
+                    //    else
+                    //    {
+                    //        if (timeWait[(int)TIMER.DELAY].Elapsed > Machine.param.Time(ParameterDefine.TIME.VACUUM_ON_TIME_OUT))
+                    //        {
+                    //            if (ret1 == 0)
+                    //            {
+                    //                SetError(ECODE.TIMEOUT_BUF1_L1_DETECT);
+                    //                break;
+                    //            }
+                    //            else
+                    //            {
+                    //                SetError(ECODE.TIMEOUT_BUF1_L2_DETECT);
+                    //                break;
+                    //            }
+                    //        }
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    Machine.IO.GetIn((int)DI.DETACH_SENSOR_3, ref ret1);
+                    //    Machine.IO.GetIn((int)DI.DETACH_SENSOR_4, ref ret2);
 
-                        if (ret1 == 1 && ret2 == 1)
-                            NextStep();
-                        else
-                        {
-                            if (timeWait[(int)TIMER.DELAY].Elapsed > Machine.param.Time(ParameterDefine.TIME.VACUUM_ON_TIME_OUT))
-                            {
-                                if (ret1 == 0)
-                                {
-                                    SetError(ECODE.TIMEOUT_BUF1_R1_DETECT);
-                                    break;
-                                }
-                                else
-                                {
-                                    SetError(ECODE.TIMEOUT_BUF1_R2_DETECT);
-                                    break;
-                                }
-                            }
-                        }
-                    }
+                    //    if (ret1 == 1 && ret2 == 1)
+                    //        NextStep();
+                    //    else
+                    //    {
+                    //        if (timeWait[(int)TIMER.DELAY].Elapsed > Machine.param.Time(ParameterDefine.TIME.VACUUM_ON_TIME_OUT))
+                    //        {
+                    //            if (ret1 == 0)
+                    //            {
+                    //                SetError(ECODE.TIMEOUT_BUF1_R1_DETECT);
+                    //                break;
+                    //            }
+                    //            else
+                    //            {
+                    //                SetError(ECODE.TIMEOUT_BUF1_R2_DETECT);
+                    //                break;
+                    //            }
+                    //        }
+                    //    }
+                    //}
                     break;
 
                 case STEP.CAM_BUF_DETECT_ON_CHECK_L:
@@ -2394,36 +2395,36 @@ namespace CAMASSEMBLYMACHINE.Process
                     {
                         NextStep(); break;
                     }
-                    if (targetCurr == 0)
-                    {
-                        Machine.IO.GetIn((int)DI.DETACH_SENSOR_1, ref ret1);
+                    //if (targetCurr == 0)
+                    //{
+                    //    Machine.IO.GetIn((int)DI.DETACH_SENSOR_1, ref ret1);
 
-                        if (ret1 == 1)
-                            NextStep();
-                        else
-                        {
-                            if (timeWait[(int)TIMER.DELAY].Elapsed > Machine.param.Time(ParameterDefine.TIME.VACUUM_ON_TIME_OUT))
-                            {
-                                SetError(ECODE.TIMEOUT_BUF1_L1_DETECT);
-                                break;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        Machine.IO.GetIn((int)DI.DETACH_SENSOR_3, ref ret1);
+                    //    if (ret1 == 1)
+                    //        NextStep();
+                    //    else
+                    //    {
+                    //        if (timeWait[(int)TIMER.DELAY].Elapsed > Machine.param.Time(ParameterDefine.TIME.VACUUM_ON_TIME_OUT))
+                    //        {
+                    //            SetError(ECODE.TIMEOUT_BUF1_L1_DETECT);
+                    //            break;
+                    //        }
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    Machine.IO.GetIn((int)DI.DETACH_SENSOR_3, ref ret1);
 
-                        if (ret1 == 1)
-                            NextStep();
-                        else
-                        {
-                            if (timeWait[(int)TIMER.DELAY].Elapsed > Machine.param.Time(ParameterDefine.TIME.VACUUM_ON_TIME_OUT))
-                            {
-                                SetError(ECODE.TIMEOUT_BUF1_R1_DETECT);
-                                break;
-                            }
-                        }
-                    }
+                    //    if (ret1 == 1)
+                    //        NextStep();
+                    //    else
+                    //    {
+                    //        if (timeWait[(int)TIMER.DELAY].Elapsed > Machine.param.Time(ParameterDefine.TIME.VACUUM_ON_TIME_OUT))
+                    //        {
+                    //            SetError(ECODE.TIMEOUT_BUF1_R1_DETECT);
+                    //            break;
+                    //        }
+                    //    }
+                    //}
                     break;
 
                 case STEP.CAM_BUF_DETECT_ON_CHECK_R:
@@ -2431,36 +2432,36 @@ namespace CAMASSEMBLYMACHINE.Process
                     {
                         NextStep(); break;
                     }
-                    if (targetCurr == 0)
-                    {
-                        Machine.IO.GetIn((int)DI.DETACH_SENSOR_2, ref ret2);
+                    //if (targetCurr == 0)
+                    //{
+                    //    Machine.IO.GetIn((int)DI.DETACH_SENSOR_2, ref ret2);
 
-                        if (ret2 == 1)
-                            NextStep();
-                        else
-                        {
-                            if (timeWait[(int)TIMER.DELAY].Elapsed > Machine.param.Time(ParameterDefine.TIME.VACUUM_ON_TIME_OUT))
-                            {
-                                SetError(ECODE.TIMEOUT_BUF1_L2_DETECT);
-                                break;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        Machine.IO.GetIn((int)DI.DETACH_SENSOR_4, ref ret2);
+                    //    if (ret2 == 1)
+                    //        NextStep();
+                    //    else
+                    //    {
+                    //        if (timeWait[(int)TIMER.DELAY].Elapsed > Machine.param.Time(ParameterDefine.TIME.VACUUM_ON_TIME_OUT))
+                    //        {
+                    //            SetError(ECODE.TIMEOUT_BUF1_L2_DETECT);
+                    //            break;
+                    //        }
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    Machine.IO.GetIn((int)DI.DETACH_SENSOR_4, ref ret2);
 
-                        if (ret2 == 1)
-                            NextStep();
-                        else
-                        {
-                            if (timeWait[(int)TIMER.DELAY].Elapsed > Machine.param.Time(ParameterDefine.TIME.VACUUM_ON_TIME_OUT))
-                            {
-                                SetError(ECODE.TIMEOUT_BUF1_R2_DETECT);
-                                break;
-                            }
-                        }
-                    }
+                    //    if (ret2 == 1)
+                    //        NextStep();
+                    //    else
+                    //    {
+                    //        if (timeWait[(int)TIMER.DELAY].Elapsed > Machine.param.Time(ParameterDefine.TIME.VACUUM_ON_TIME_OUT))
+                    //        {
+                    //            SetError(ECODE.TIMEOUT_BUF1_R2_DETECT);
+                    //            break;
+                    //        }
+                    //    }
+                    //}
                     break;
             }
         }

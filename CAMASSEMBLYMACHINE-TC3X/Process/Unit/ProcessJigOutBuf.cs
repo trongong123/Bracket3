@@ -859,10 +859,10 @@ namespace CAMASSEMBLYMACHINE.Process
                 case STEP.JIG_WORK2_BWD:
                     resumeStepIndex = StepIndex;
 
-                    Machine.IO.SetOut((int)DO.JIG_WORK2_PALLET_LOCK_BWD, 1);
-                    Machine.IO.SetOut((int)DO.JIG_WORK2_PALLET_LOCK_FWD, 0);
+                    Machine.IO.SetOut((int)DO.JIG_OUT_BUF_PALLET_LOCK_BWD, 1);
+                    Machine.IO.SetOut((int)DO.JIG_OUT_BUF_PALLET_LOCK_FWD, 0);
 
-                    Step = STEP.STOPPER_DOWN_CHECK;
+                    Step = STEP.JIG_WORK2_BWD_CHECK;
                     timeWait[(int)TIMER.TIMEOUT].Start();
                     timeWait[(int)TIMER.DELAY].Start();
                     break;
@@ -870,7 +870,7 @@ namespace CAMASSEMBLYMACHINE.Process
                 case STEP.JIG_WORK2_BWD_CHECK:
                     if (timeWait[(int)TIMER.TIMEOUT].Elapsed > Machine.param.Time(ParameterDefine.TIME.CYLINDER_TIME_OUT))
                     {
-                        SetError(ECODE.TIMEOUT_JIG_OUTBUF_STOPPER_DOWN);
+                        SetError(ECODE.TIMEOUT_JIG_WORK2_BWD);
                         break;
                     }
 
@@ -884,10 +884,10 @@ namespace CAMASSEMBLYMACHINE.Process
                 case STEP.JIG_WORK2_FWD:
                     resumeStepIndex = StepIndex;
 
-                    Machine.IO.SetOut((int)DO.JIG_WORK2_PALLET_LOCK_BWD, 0);
-                    Machine.IO.SetOut((int)DO.JIG_WORK2_PALLET_LOCK_FWD, 1);
+                    Machine.IO.SetOut((int)DO.JIG_OUT_BUF_PALLET_LOCK_BWD, 0);
+                    Machine.IO.SetOut((int)DO.JIG_OUT_BUF_PALLET_LOCK_FWD, 1);
 
-                    Step = STEP.STOPPER_DOWN_CHECK;
+                    Step = STEP.JIG_WORK2_FWD_CHECK;
                     timeWait[(int)TIMER.TIMEOUT].Start();
                     timeWait[(int)TIMER.DELAY].Start();
                     break;
@@ -895,7 +895,7 @@ namespace CAMASSEMBLYMACHINE.Process
                 case STEP.JIG_WORK2_FWD_CHECK:
                     if (timeWait[(int)TIMER.TIMEOUT].Elapsed > Machine.param.Time(ParameterDefine.TIME.CYLINDER_TIME_OUT))
                     {
-                        SetError(ECODE.TIMEOUT_JIG_OUTBUF_STOPPER_DOWN);
+                        SetError(ECODE.TIMEOUT_JIG_WORK2_FWD);
                         break;
                     }
 
@@ -908,10 +908,10 @@ namespace CAMASSEMBLYMACHINE.Process
                 case STEP.JIG_ASSEMBLER_DOWN:
                     resumeStepIndex = StepIndex;
 
-                    Machine.IO.SetOut((int)DO.JIG_ASSEMBLE_PRESS_DOWN, 1);
-                    Machine.IO.SetOut((int)DO.JIG_ASSEMBLE_PRESS_UP, 0);
+                    Machine.IO.SetOut((int)DO.JIG_OUT_BUF_PRESS_DOWN, 1);
+                    Machine.IO.SetOut((int)DO.JIG_OUT_BUF_PRESS_UP, 0);
 
-                    Step = STEP.STOPPER_DOWN_CHECK;
+                    Step = STEP.JIG_ASSEMBLER_DOWN_CHECK;
                     timeWait[(int)TIMER.TIMEOUT].Start();
                     timeWait[(int)TIMER.DELAY].Start();
                     break;
@@ -919,12 +919,12 @@ namespace CAMASSEMBLYMACHINE.Process
                 case STEP.JIG_ASSEMBLER_DOWN_CHECK:
                     if (timeWait[(int)TIMER.TIMEOUT].Elapsed > Machine.param.Time(ParameterDefine.TIME.CYLINDER_TIME_OUT))
                     {
-                        SetError(ECODE.TIMEOUT_JIG_OUTBUF_STOPPER_DOWN);
+                        SetError(ECODE.TIMEOUT_JIG_ASSEMBLER_DOWN);
                         break;
                     }
 
-                    Machine.IO.GetIn((int)DI.JIG_ASSEMBLE_PRESS_DOWN, ref ret1);
-                    Machine.IO.GetIn((int)DI.JIG_ASSEMBLE_PRESS_UP, ref ret2);
+                    Machine.IO.GetIn((int)DI.JIG_OUT_BUF_PRESS_DOWN, ref ret1);
+                    Machine.IO.GetIn((int)DI.JIG_OUT_BUF_PRESS_UP, ref ret2);
 
                     if (ret1 == 1 && ret2 == 0)
                         NextStep();
@@ -932,10 +932,10 @@ namespace CAMASSEMBLYMACHINE.Process
                 case STEP.JIG_ASSEMBLER_UP:
                     resumeStepIndex = StepIndex;
 
-                    Machine.IO.SetOut((int)DO.JIG_ASSEMBLE_PRESS_DOWN, 0);
-                    Machine.IO.SetOut((int)DO.JIG_ASSEMBLE_PRESS_UP, 1);
+                    Machine.IO.SetOut((int)DO.JIG_OUT_BUF_PRESS_DOWN, 0);
+                    Machine.IO.SetOut((int)DO.JIG_OUT_BUF_PRESS_UP, 1);
 
-                    Step = STEP.STOPPER_DOWN_CHECK;
+                    Step = STEP.JIG_ASSEMBLER_UP_CHECK;
                     timeWait[(int)TIMER.TIMEOUT].Start();
                     timeWait[(int)TIMER.DELAY].Start();
                     break;
@@ -943,17 +943,22 @@ namespace CAMASSEMBLYMACHINE.Process
                 case STEP.JIG_ASSEMBLER_UP_CHECK:
                     if (timeWait[(int)TIMER.TIMEOUT].Elapsed > Machine.param.Time(ParameterDefine.TIME.CYLINDER_TIME_OUT))
                     {
-                        SetError(ECODE.TIMEOUT_JIG_OUTBUF_STOPPER_DOWN);
+                        SetError(ECODE.TIMEOUT_JIG_ASSEMBLER_UP);
                         break;
                     }
 
-                    Machine.IO.GetIn((int)DI.JIG_ASSEMBLE_PRESS_DOWN, ref ret1);
-                    Machine.IO.GetIn((int)DI.JIG_ASSEMBLE_PRESS_UP, ref ret2);
+                    Machine.IO.GetIn((int)DI.JIG_OUT_BUF_PRESS_DOWN, ref ret1);
+                    Machine.IO.GetIn((int)DI.JIG_OUT_BUF_PRESS_UP, ref ret2);
 
                     if (ret1 == 0 && ret2 == 1)
                         NextStep();
                     break;
             }
+        }
+
+        private void SetError(object tIMEOUT_JIG_ASSEMBLER_DOWN)
+        {
+            throw new NotImplementedException();
         }
 
         public override void SetHeadTarget(int iTarget)

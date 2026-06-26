@@ -256,10 +256,10 @@ namespace CAMASSEMBLYMACHINE.UI
             #endregion
 
             #region TRANSFER
-            SetUnitColorStatus(unitBoxTransLeft1, GetStatusCamBuffer(DI.DETACH_SENSOR_1));
-            SetUnitColorStatus(unitBoxTransLeft2, GetStatusCamBuffer(DI.DETACH_SENSOR_2));
-            SetUnitColorStatus(unitBoxTransRight1, GetStatusCamBuffer(DI.DETACH_SENSOR_3));
-            SetUnitColorStatus(unitBoxTransRight2, GetStatusCamBuffer(DI.DETACH_SENSOR_4));
+            //SetUnitColorStatus(unitBoxTransLeft1, GetStatusCamBuffer(DI.DETACH_SENSOR_1));
+            //SetUnitColorStatus(unitBoxTransLeft2, GetStatusCamBuffer(DI.DETACH_SENSOR_2));
+            //SetUnitColorStatus(unitBoxTransRight1, GetStatusCamBuffer(DI.DETACH_SENSOR_3));
+            //SetUnitColorStatus(unitBoxTransRight2, GetStatusCamBuffer(DI.DETACH_SENSOR_4));
 
             SetUnitImageExistent(unitBoxTransLeft1, UNIT_TYPE.PARTS, Machine.Parts[(int)UNITPART.CAM_TRF_L1].exist);
             SetUnitImageExistent(unitBoxTransLeft2, UNIT_TYPE.PARTS, Machine.Parts[(int)UNITPART.CAM_TRF_L2].exist);

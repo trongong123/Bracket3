@@ -39,6 +39,10 @@ namespace CAMASSEMBLYMACHINE.Process
             AXIS_TRANSFER_ACTION_CHECK,
             AXIS_ASSEMBLER_ACTION,
             AXIS_ASSEMBLER_ACTION_CHECK,
+            AXIS_ASSEMBLER_R_ACTION,
+            AXIS_ASSEMBLER_R_ACTION_CHECK,
+            AXIS_ASSEMBLER_XY_ACTION,
+            AXIS_ASSEMBLER_XY_ACTION_CHECK,
             AXIS_PICKER_ACTION,
             AXIS_PICKER_HOME_CHECK,
 
@@ -184,7 +188,8 @@ namespace CAMASSEMBLYMACHINE.Process
                         STEP.PEELING_RETURN,
                         STEP.PEELING_DOWN,
                         STEP.AXIS_TRANSFER_ACTION,
-                        STEP.AXIS_ASSEMBLER_ACTION,
+                        STEP.AXIS_ASSEMBLER_R_ACTION,
+                        STEP.AXIS_ASSEMBLER_XY_ACTION,
                         STEP.AXIS_PICKER_ACTION,
 
                         STEP.AXIS_HOME_COMPLETE,
@@ -206,7 +211,8 @@ namespace CAMASSEMBLYMACHINE.Process
                     {
                         STEP.AXIS_Z_ACTION,
                         STEP.AXIS_TRANSFER_ACTION,
-                        STEP.AXIS_ASSEMBLER_ACTION,
+                        STEP.AXIS_ASSEMBLER_R_ACTION,
+                        STEP.AXIS_ASSEMBLER_XY_ACTION,
                         STEP.AXIS_PICKER_ACTION,
                         STEP.IDLE,
                     };
@@ -573,6 +579,34 @@ namespace CAMASSEMBLYMACHINE.Process
                     NextStep();
                     break;
 
+                case STEP.AXIS_ASSEMBLER_R_ACTION:
+                    DoTaskForAssignedAxisGroup(AXIS.ASSEMBLER_R1, AXIS.ASSEMBLER_R2);
+                    timeWait[(int)TIMER.TIMEOUT].Start();
+                    Step = STEP.AXIS_ASSEMBLER_R_ACTION_CHECK;
+                    break;
+                case STEP.AXIS_ASSEMBLER_R_ACTION_CHECK:
+                    if(timeWait[(int)TIMER.TIMEOUT].Elapsed > iHomeSearchTimeOut)
+                    {
+                        SetError(ECODE.TIMEOUT_HOME_SEARCH_ASSEMBLER_GROUP);
+                        break;
+                    }
+                    if (!IsAssignedAxisGroupHomeDone(AXIS.ASSEMBLER_R1, AXIS.ASSEMBLER_R2)) break;
+                    NextStep();
+                    break;
+                case STEP.AXIS_ASSEMBLER_XY_ACTION:
+                    DoTaskForAssignedAxisGroup(AXIS.ASSEMBLER_X, AXIS.ASSEMBLER_Y);
+                    timeWait[(int)TIMER.TIMEOUT].Start();
+                    Step = STEP.AXIS_ASSEMBLER_XY_ACTION_CHECK;
+                    break;
+                case STEP.AXIS_ASSEMBLER_XY_ACTION_CHECK:
+                    if (timeWait[(int)TIMER.TIMEOUT].Elapsed > iHomeSearchTimeOut)
+                    {
+                        SetError(ECODE.TIMEOUT_HOME_SEARCH_ASSEMBLER_GROUP);
+                        break;
+                    }
+                     if (!IsAssignedAxisGroupHomeDone(AXIS.ASSEMBLER_X, AXIS.ASSEMBLER_Y)) break;
+                    NextStep();
+                    break;
                 case STEP.AXIS_PICKER_ACTION:
                     DoTaskForAssignedAxisGroup(AXIS.PROD_PICKUP_X, AXIS.PROD_PICKUP_Y, AXIS.PROD_PICKUP_R1, AXIS.PROD_PICKUP_R2);
                     timeWait[(int)TIMER.TIMEOUT].Start();

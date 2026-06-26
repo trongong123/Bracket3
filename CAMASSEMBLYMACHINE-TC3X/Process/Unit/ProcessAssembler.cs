@@ -2254,8 +2254,8 @@ namespace CAMASSEMBLYMACHINE.Process
                     }
                     if (targetCurr == 0)
                     {
-                        Machine.IO.GetIn((int)DI.DETACH_SENSOR_1, ref ret1);
-                        Machine.IO.GetIn((int)DI.DETACH_SENSOR_2, ref ret2);
+                        Machine.IO.GetIn((int)DI.CAM_TRF_L1_DETECT_ON, ref ret1);
+                        Machine.IO.GetIn((int)DI.CAM_TRF_L2_DETECT_ON, ref ret2);
 
                         if (ret1 == 1 && ret2 == 1)
                             NextStep();
@@ -2278,8 +2278,8 @@ namespace CAMASSEMBLYMACHINE.Process
                     }
                     else
                     {
-                        Machine.IO.GetIn((int)DI.DETACH_SENSOR_3, ref ret1);
-                        Machine.IO.GetIn((int)DI.DETACH_SENSOR_4, ref ret2);
+                        Machine.IO.GetIn((int)DI.CAM_TRF_R1_DETECT_ON, ref ret1);
+                        Machine.IO.GetIn((int)DI.CAM_TRF_R2_DETECT_ON, ref ret2);
 
                         if (ret1 == 1 && ret2 == 1)
                             NextStep();
@@ -2310,8 +2310,8 @@ namespace CAMASSEMBLYMACHINE.Process
                     }
                     if (targetCurr == 0)
                     {
-                        Machine.IO.GetIn((int)DI.DETACH_SENSOR_1, ref ret1);
-                        Machine.IO.GetIn((int)DI.DETACH_SENSOR_2, ref ret2);
+                        Machine.IO.GetIn((int)DI.CAM_TRF_L1_DETECT_ON, ref ret1);
+                        Machine.IO.GetIn((int)DI.CAM_TRF_L2_DETECT_ON, ref ret2);
 
                         if (ret1 == 0 && ret2 == 0)
                             NextStep();
@@ -2334,8 +2334,8 @@ namespace CAMASSEMBLYMACHINE.Process
                     }
                     else
                     {
-                        Machine.IO.GetIn((int)DI.DETACH_SENSOR_3, ref ret1);
-                        Machine.IO.GetIn((int)DI.DETACH_SENSOR_4, ref ret2);
+                        Machine.IO.GetIn((int)DI.CAM_TRF_R1_DETECT_ON, ref ret1);
+                        Machine.IO.GetIn((int)DI.CAM_TRF_R2_DETECT_ON, ref ret2);
 
                         if (ret1 == 0 && ret2 == 0)
                             NextStep();

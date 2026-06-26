@@ -71,11 +71,11 @@ namespace CAMASSEMBLYMACHINE.UI
 
 
 
-            Machine.IO.GetOut((int)DO.RIGHT_PEELING_BLOW, ref returnValue1);
+            //Machine.IO.GetOut((int)DO.RIGHT_PEELING_BLOW, ref returnValue1);
             disp_PeelingBlowOn.ButtonPush = returnValue1 == 1 ? true : false;
             disp_PeelingBlowOff.ButtonPush = returnValue1 == 1 ? false : true;
 
-            Machine.IO.GetOut((int)DO.DUST_SUCTION, ref returnValue1);
+            //Machine.IO.GetOut((int)DO.DUST_SUCTION, ref returnValue1);
             disp_DustSuctionOn.ButtonPush = returnValue1 == 1 ? true : false;
             disp_DustSuctionOff.ButtonPush = returnValue1 == 1 ? false : true;
         }
@@ -169,18 +169,18 @@ namespace CAMASSEMBLYMACHINE.UI
         {
             uint isVacOn = 0;
 
-            Machine.IO.GetOut((int)DO.LEFT_PEELING_BLOW, ref isVacOn);
+            //Machine.IO.GetOut((int)DO.LEFT_PEELING_BLOW, ref isVacOn);
             if (isVacOn == 0)
             {
                 LogUtil.Instance.Log(LOG_TYPE.UI, "Left Buffer Dust Box Blow On Button Click", CONTENT_TYPE.INFO);
 
-                Machine.IO.SetOut((int)DO.LEFT_PEELING_BLOW, 1);
+                //Machine.IO.SetOut((int)DO.LEFT_PEELING_BLOW, 1);
             }
             else if (isVacOn == 1)
             {
                 LogUtil.Instance.Log(LOG_TYPE.UI, "Left Buffer Dust Box Blow Off Button Click", CONTENT_TYPE.INFO);
 
-                Machine.IO.SetOut((int)DO.LEFT_PEELING_BLOW, 0);
+                //Machine.IO.SetOut((int)DO.LEFT_PEELING_BLOW, 0);
             }
         }
 
@@ -188,18 +188,18 @@ namespace CAMASSEMBLYMACHINE.UI
         {
             uint isVacOn = 0;
 
-            Machine.IO.GetOut((int)DO.DUST_SUCTION, ref isVacOn);
+            //Machine.IO.GetOut((int)DO.DUST_SUCTION, ref isVacOn);
             if (isVacOn == 0)
             {
                 LogUtil.Instance.Log(LOG_TYPE.UI, "Film Suction On Button Click", CONTENT_TYPE.INFO);
 
-                Machine.IO.SetOut((int)DO.DUST_SUCTION, 1);
+                //Machine.IO.SetOut((int)DO.DUST_SUCTION, 1);
             }
             else if (isVacOn == 1)
             {
                 LogUtil.Instance.Log(LOG_TYPE.UI, "Film Suction Off Button Click", CONTENT_TYPE.INFO);
 
-                Machine.IO.SetOut((int)DO.DUST_SUCTION, 0);
+                //Machine.IO.SetOut((int)DO.DUST_SUCTION, 0);
             }
         }
 
@@ -358,7 +358,7 @@ namespace CAMASSEMBLYMACHINE.UI
             LogUtil.Instance.Log(LOG_TYPE.UI, "Left Buffer Peeling Up Process Button Click", CONTENT_TYPE.INFO);
 
             var proc = Machine.proclist[(int)Machine.PROCESS.LEFTBUF];
-            proc.SetMessage((int)ProcessBufStageOne.MSG.MSG_PEELING_UP_PRODUCT);
+            //proc.SetMessage((int)ProcessBufStageOne.MSG.MSG_PEELING_UP_PRODUCT);
         }
 
         private void button_PeelingDownP_Click(object sender, EventArgs e)
@@ -366,7 +366,7 @@ namespace CAMASSEMBLYMACHINE.UI
             LogUtil.Instance.Log(LOG_TYPE.UI, "Left Buffer Peeling Down Process Button Click", CONTENT_TYPE.INFO);
 
             var proc = Machine.proclist[(int)Machine.PROCESS.LEFTBUF];
-            proc.SetMessage((int)ProcessBufStageOne.MSG.MSG_PEELING_DOWN_PRODUCT);
+            //proc.SetMessage((int)ProcessBufStageOne.MSG.MSG_PEELING_DOWN_PRODUCT);
         }
 
         private void button_TransferUnload_Click(object sender, EventArgs e)

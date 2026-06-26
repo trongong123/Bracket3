@@ -276,7 +276,7 @@ namespace CAMASSEMBLYMACHINE.Define
             /*[0x0C]*/
             SP0x0C,
             /*[0x0D]*/
-            SP0x0D,
+            DOOR_SENSOR_DIVERTER,
             /*[0x0E]*/
             LIGHT_CURTAIN_IN,
             /*[0x0F]*/
@@ -303,17 +303,17 @@ namespace CAMASSEMBLYMACHINE.Define
             /*[0x19]*/
             SP0x19,
             /*[0x1A]*/
-            SP0x1A,
+            JIG_OUT_DIVERTER_DETECT_IN,
             /*[0x1B]*/
-            SP0x1B,
+            JIG_OUT_DIVERTER_DETECT_MID,
             /*[0x1C]*/
-            SP0x1C,
+            JIG_OUT_DIVERTER_DETECT_OUT,
             /*[0x1D]*/
-            SP0x1D,
+            JIG_IN_DIVERTER_DETECT_IN,
             /*[0x1E]*/
-            SP0x1E,
+            JIG_IN_DIVERTER_DETECT_MID,
             /*[0x1F]*/
-            SP0x1F,
+            JIG_IN_DIVERTER_DETECT_OUT,
 
             /*[0x20]*/
             NO_INTERFERENCE_PICKER_Y,
@@ -349,17 +349,17 @@ namespace CAMASSEMBLYMACHINE.Define
             JIG_OUT_CARRIER_ERROR,
 
             /*[0x30]*/
-            IF_TRAY_IN_AMR_PID1,
+            IF_AMR_ARRIVAL,
             /*[0x31]*/
-            IF_TRAY_IN_AMR_PID2,
+            IF_AMR_INPUT_TRAY_START,
             /*[0x32]*/
-            IF_TRAY_IN_AMR_PID3,
+            IF_AMR_INPUT_TRAY_COMPLETE,
             /*[0x33]*/
-            IF_TRAY_OUT_AMR_PID1,
+            IF_AMR_OUTPUT_TRAY_START,
             /*[0x34]*/
-            IF_TRAY_OUT_AMR_PID2,
+            IF_AMR_OUTPUT_TRAY_COMPLETE,
             /*[0x35]*/
-            IF_TRAY_OUT_AMR_PID3,
+            IF_AMR_SPARE_6,
             /*[0x36]*/
             JIG_WORK_2_PALLET_LOCK_BWD,
             /*[0x37]*/
@@ -532,7 +532,7 @@ namespace CAMASSEMBLYMACHINE.Define
             /*[0x88]*/
             TRAY_TRF_VACUUM,
             /*[0x89]*/
-            BERNOULLI_PAD_ASSY_VAC_ON,
+            SP0x89,
             /*[0x8A]*/
             SP0x8A,
             /*[0x8B]*/
@@ -547,13 +547,13 @@ namespace CAMASSEMBLYMACHINE.Define
             TRAY_TRF_DETECT_R_DOWN,
 
             /*[0x90]*/
-            JIG_ALIGN_PRESS_UP,
+            JIG_WORK_PRESS_UP,
             /*[0x91]*/
-            JIG_ALIGN_PRESS_DOWN,
+            JIG_WORK_PRESS_DOWN,
             /*[0x92]*/
-            JIG_ASSEMBLE_PRESS_UP,
+            JIG_OUT_BUF_PRESS_UP,
             /*[0x93]*/
-            JIG_ASSEMBLE_PRESS_DOWN,
+            JIG_OUT_BUF_PRESS_DOWN,
             /*[0x94]*/
             SP0x94,
             /*[0x95]*/
@@ -567,36 +567,36 @@ namespace CAMASSEMBLYMACHINE.Define
             /*[0x99]*/
             SP0x99,
             /*[0x9A]*/
-            DETACH_SENSOR_1,
+            CAM_TRF_L1_DETECT_ON,
             /*[0x9B]*/
-            DETACH_SENSOR_2,
+            CAM_TRF_L2_DETECT_ON,
             /*[0x9C]*/
-            DETACH_SENSOR_3,
+            CAM_TRF_R1_DETECT_ON,
             /*[0x9D]*/
-            DETACH_SENSOR_4,
+            CAM_TRF_R2_DETECT_ON,
             /*[0x9E]*/
             SP0x9E,
             /*[0x9F]*/
             SP0x9F,
 
             /*[0xA0]*/
-            DIVERTER_UPPER_CV_IN_DETECT,
+            JIG_OUT_DIVERTER_STOPPER_UP,
             /*[0xA1]*/
-            DIVERTER_UPPER_CV_MID_DETECT,
+            JIG_OUT_DIVERTER_STOPPER_DOWN,
             /*[0xA2]*/
-            DIVERTER_UPPER_CV_OUT_DETECT,
+            SP0xA2,
             /*[0xA3]*/
             SP0xA3,
             /*[0xA4]*/
-            DIVERTER_UPPER_CV_STOPPER_UP,
+            JIG_IN_DIVERTER_STOPPER_UP,
             /*[0xA5]*/
-            DIVERTER_UPPER_CV_STOPPER_DOWN,
+            JIG_IN_DIVERTER_STOPPER_DOWN,
             /*[0xA6]*/
             SP0xA6,
             /*[0xA7]*/
-            SP0xA7,
+            DIVERTER_IF_DOWNSTREAM_PORT1_READY_TO_LOAD,
             /*[0xA8]*/
-            SP0xA8,
+            DIVERTER_IF_DOWNSTREAM_PORT2_READY_TO_LOAD,
             /*[0xA9]*/
             SP0xA9,
             /*[0xAA]*/
@@ -716,21 +716,21 @@ namespace CAMASSEMBLYMACHINE.Define
             SP0x0F,
 
             /*[0x10]*/
-            IF_TRAY_IN_AMR_PID1,
+            IF_AMR_START_TRANSFER_PROCESS,
             /*[0x11]*/
-            IF_TRAY_IN_AMR_PID2,
+            IF_AMR_INPUT_TRAY_START,
             /*[0x12]*/
-            IF_TRAY_IN_AMR_PID3,
+            IF_AMR_INPUT_TRAY_COMPLETE,
             /*[0x13]*/
-            IF_TRAY_OUT_AMR_PID1,
+            IF_AMR_OUTPUT_TRAY_START,
             /*[0x14]*/
-            IF_TRAY_OUT_AMR_PID2,
+            IF_AMR_OUTPUT_TRAY_COMPLETE,
             /*[0x15]*/
-            IF_TRAY_OUT_AMR_PID3,
+            IF_AMR_SPARE_6,
             /*[0x16]*/
-            SP0x16,
+            IF_AMR_SPARE_7,
             /*[0x17]*/
-            SP0x17,
+            IF_AMR_SPARE_8,
             /*[0x18]*/
             IF_MACHINE_RUN_SIG_FOR_FRONT,
             /*[0x19]*/
@@ -769,9 +769,9 @@ namespace CAMASSEMBLYMACHINE.Define
             /*[0x29]*/
             TRAY_OUT_CONV_RUN,
             /*[0x2A]*/
-            SP0x2A,
+            JIG_OUT_DIVERTER_CV_RUN,
             /*[0x2B]*/
-            SP0x2B,
+            JIG_IN_DIVERTER_CV_RUN,
             /*[0x2C]*/
             SP0x2C,
             /*[0x2D]*/
@@ -819,7 +819,7 @@ namespace CAMASSEMBLYMACHINE.Define
             /*[0x41]*/
             SP0x41,
             /*[0x42]*/
-            SP0x42,
+            DIVERTER_IF_REQUEST_LOADING_FROM_DOWNSTREAM,
             /*[0x43]*/
             SP0x43,
             /*[0x44]*/
@@ -831,13 +831,13 @@ namespace CAMASSEMBLYMACHINE.Define
             /*[0x47]*/
             SP0x47,
             /*[0x48]*/
-            SP0x48,
+            JIG_OUT_DIVERTER_STOPPER_UP,
             /*[0x49]*/
-            SP0x49,
+            JIG_OUT_DIVERTER_STOPPER_DOWN,
             /*[0x4A]*/
-            SP0x4A,
+            JIG_IN_DIVERTER_STOPPER_UP,
             /*[0x4B]*/
-            SP0x4B,
+            JIG_IN_DIVERTER_STOPPER_DOWN,
             /*[0x4C]*/
             SP0x4C,
             /*[0x4D]*/
@@ -914,17 +914,17 @@ namespace CAMASSEMBLYMACHINE.Define
             SP0x6F,
 
             /*[0x70]*/
-            JIG_WORK2_PALLET_LOCK_FWD,
+            JIG_OUT_BUF_PALLET_LOCK_FWD,
             /*[0x71]*/
-            JIG_WORK2_PALLET_LOCK_BWD,
+            JIG_OUT_BUF_PALLET_LOCK_BWD,
             /*[0x72]*/
-            JIG_ALIGN_PRESS_UP,
+            JIG_WORK_PRESS_UP,
             /*[0x73]*/
-            JIG_ALIGN_PRESS_DOWN,
+            JIG_WORK_PRESS_DOWN,
             /*[0x74]*/
-            JIG_ASSEMBLE_PRESS_UP,
+            JIG_OUT_BUF_PRESS_UP,
             /*[0x75]*/
-            JIG_ASSEMBLE_PRESS_DOWN,
+            JIG_OUT_BUF_PRESS_DOWN,
             /*[0x76]*/
             SP0x76,
             /*[0x77]*/

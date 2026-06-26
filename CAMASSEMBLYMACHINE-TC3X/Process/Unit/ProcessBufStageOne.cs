@@ -277,8 +277,8 @@ namespace CAMASSEMBLYMACHINE.Process
             //// BUF DETECT
             //{(int)DI.CAM_BUF_L1_DETECT_ON,  (int)DI.CAM_BUF_R1_DETECT_ON},
             //{(int)DI.CAM_BUF_L2_DETECT_ON,  (int)DI.CAM_BUF_R2_DETECT_ON},
-            {(int)DI.DETACH_SENSOR_1, (int)DI.DETACH_SENSOR_3},
-            {(int)DI.DETACH_SENSOR_2, (int)DI.DETACH_SENSOR_4},
+            {(int)DI.CAM_TRF_L1_DETECT_ON, (int)DI.CAM_TRF_R1_DETECT_ON},
+            {(int)DI.CAM_TRF_L2_DETECT_ON, (int)DI.CAM_TRF_R2_DETECT_ON},
         };
 
         public enum IOOut
@@ -316,7 +316,7 @@ namespace CAMASSEMBLYMACHINE.Process
         {
             READY,
             LOAD,
-            PEELING,
+            //PEELING,
             UNLOAD
         }
         RecipeDefine.POSITION[,] transferPos =
@@ -572,7 +572,7 @@ namespace CAMASSEMBLYMACHINE.Process
                         //STEP.TRF_CLAMP,
                         //STEP.TRF_UNCLAMP,
                         //STEP.TRF_UP,
-                        STEP.TRF_READY_POS,
+                        //STEP.TRF_READY_POS,
                         STEP.ULD_BUF_DETECT_ON_CHECK,
                         STEP.IDLE,
                     };
@@ -861,6 +861,12 @@ namespace CAMASSEMBLYMACHINE.Process
                 case AUTOSTEP.TRANSFER_LOAD_PRODUCT:
                     if (!Machine.Parts[place1[0, unitNo]].exist || !Machine.Parts[place1[1, unitNo]].exist)
                         break;
+                    if (Machine.status.mode == SystemMode.SystemModeDRYRUN
+                        && Machine.prod_loader_start_place[unitNo]
+                        && !Machine.interfer_prod_loader_on_buffer[unitNo])
+                    {
+                        Machine.prod_loader_start_place[unitNo] = false;
+                    }
                     if (Machine.prod_loader_start_place[unitNo]) break;
                     Machine.buffer_ready_to_place[unitNo] = false;
                     SetMessage((int)MSG.MSG_TRANSFER_LOAD_PRODUCT);
@@ -1303,25 +1309,25 @@ namespace CAMASSEMBLYMACHINE.Process
                         NextStep();
                         break;
                     }
-                    Machine.IO.GetIn(inIo[(int)IOIn.DETACH1, unitNo], ref ret1);
-                    Machine.IO.GetIn(inIo[(int)IOIn.DETACH2, unitNo], ref ret2);
+                    //Machine.IO.GetIn(inIo[(int)IOIn.DETACH1, unitNo], ref ret1);
+                    //Machine.IO.GetIn(inIo[(int)IOIn.DETACH2, unitNo], ref ret2);
 
-                    if (Machine.status.mode == SystemMode.SystemModeDRYRUN)
-                    {
-                        ret1 = 1;
-                        ret2 = 1;
-                    }
-                    if (ret1 != 1)
-                    {
-                        if (unitNo == 0) SetError(ECODE.BUF_LEFT_REAR_LEFT_DETECT_SENSOR_ERROR);
-                        if (unitNo == 1) SetError(ECODE.BUF_RIGHT_REAR_LEFT_DETECT_SENSOR_ERROR);
-                    }
-                    else if (ret2 != 1)
-                    {
-                        if (unitNo == 0) SetError(ECODE.BUF_LEFT_REAR_RIGHT_DETECT_SENSOR_ERROR);
-                        if (unitNo == 1) SetError(ECODE.BUF_RIGHT_REAR_RIGHT_DETECT_SENSOR_ERROR);
-                    }
-                    else NextStep();
+                    //if (Machine.status.mode == SystemMode.SystemModeDRYRUN)
+                    //{
+                    //    ret1 = 1;
+                    //    ret2 = 1;
+                    //}
+                    //if (ret1 != 1)
+                    //{
+                    //    if (unitNo == 0) SetError(ECODE.BUF_LEFT_REAR_LEFT_DETECT_SENSOR_ERROR);
+                    //    if (unitNo == 1) SetError(ECODE.BUF_RIGHT_REAR_LEFT_DETECT_SENSOR_ERROR);
+                    //}
+                    //else if (ret2 != 1)
+                    //{
+                    //    if (unitNo == 0) SetError(ECODE.BUF_LEFT_REAR_RIGHT_DETECT_SENSOR_ERROR);
+                    //    if (unitNo == 1) SetError(ECODE.BUF_RIGHT_REAR_RIGHT_DETECT_SENSOR_ERROR);
+                    //}
+                    //else NextStep();
                     break;
 
                 case STEP.LD_BUF_DETECT_OFF_CHECK:
@@ -1330,25 +1336,25 @@ namespace CAMASSEMBLYMACHINE.Process
                         NextStep();
                         break;
                     }
-                    Machine.IO.GetIn(inIo[(int)IOIn.DETACH1, unitNo], ref ret1);
-                    Machine.IO.GetIn(inIo[(int)IOIn.DETACH2, unitNo], ref ret2);
+                    //Machine.IO.GetIn(inIo[(int)IOIn.DETACH1, unitNo], ref ret1);
+                    //Machine.IO.GetIn(inIo[(int)IOIn.DETACH2, unitNo], ref ret2);
 
-                    if (Machine.status.mode == SystemMode.SystemModeDRYRUN)
-                    {
-                        ret1 = 0;
-                        ret2 = 0;
-                    }
-                    if (ret1 != 0)
-                    {
-                        if (unitNo == 0) SetError(ECODE.BUF_LEFT_REAR_LEFT_DETECT_SENSOR_ERROR);
-                        if (unitNo == 1) SetError(ECODE.BUF_RIGHT_REAR_LEFT_DETECT_SENSOR_ERROR);
-                    }
-                    else if (ret2 != 0)
-                    {
-                        if (unitNo == 0) SetError(ECODE.BUF_LEFT_REAR_RIGHT_DETECT_SENSOR_ERROR);
-                        if (unitNo == 1) SetError(ECODE.BUF_RIGHT_REAR_RIGHT_DETECT_SENSOR_ERROR);
-                    }
-                    else NextStep();
+                    //if (Machine.status.mode == SystemMode.SystemModeDRYRUN)
+                    //{
+                    //    ret1 = 0;
+                    //    ret2 = 0;
+                    //}
+                    //if (ret1 != 0)
+                    //{
+                    //    if (unitNo == 0) SetError(ECODE.BUF_LEFT_REAR_LEFT_DETECT_SENSOR_ERROR);
+                    //    if (unitNo == 1) SetError(ECODE.BUF_RIGHT_REAR_LEFT_DETECT_SENSOR_ERROR);
+                    //}
+                    //else if (ret2 != 0)
+                    //{
+                    //    if (unitNo == 0) SetError(ECODE.BUF_LEFT_REAR_RIGHT_DETECT_SENSOR_ERROR);
+                    //    if (unitNo == 1) SetError(ECODE.BUF_RIGHT_REAR_RIGHT_DETECT_SENSOR_ERROR);
+                    //}
+                    //else NextStep();
                     break;
 
                 case STEP.ULD_BUF_DETECT_ON_CHECK:
@@ -1357,39 +1363,39 @@ namespace CAMASSEMBLYMACHINE.Process
                         NextStep();
                         break;
                     }
-                    Machine.IO.GetIn(inIo[(int)IOIn.DETACH3, unitNo], ref ret1);
-                    Machine.IO.GetIn(inIo[(int)IOIn.DETACH4, unitNo], ref ret2);
+                    //Machine.IO.GetIn(inIo[(int)IOIn.DETACH3, unitNo], ref ret1);
+                    //Machine.IO.GetIn(inIo[(int)IOIn.DETACH4, unitNo], ref ret2);
 
-                    if (Machine.status.mode == SystemMode.SystemModeDRYRUN)
-                    {
-                        ret1 = 1;
-                        ret2 = 1;
-                    }
+                    //if (Machine.status.mode == SystemMode.SystemModeDRYRUN)
+                    //{
+                    //    ret1 = 1;
+                    //    ret2 = 1;
+                    //}
 
-                    if (ret1 == 1)
-                    {
-                        Machine.Parts[place2[0, unitNo]].exist = true;
-                        Machine.Parts[transfer[0, unitNo]].exist = false;
-                    }
-                    else
-                    {
-                        if (unitNo == 0) SetError(ECODE.BUF_LEFT_FRONT_LEFT_DETECT_SENSOR_ERROR);
-                        if (unitNo == 1) SetError(ECODE.BUF_RIGHT_FRONT_LEFT_DETECT_SENSOR_ERROR);
-                        break;
-                    }
+                    //if (ret1 == 1)
+                    //{
+                    //    Machine.Parts[place2[0, unitNo]].exist = true;
+                    //    Machine.Parts[transfer[0, unitNo]].exist = false;
+                    //}
+                    //else
+                    //{
+                    //    if (unitNo == 0) SetError(ECODE.BUF_LEFT_FRONT_LEFT_DETECT_SENSOR_ERROR);
+                    //    if (unitNo == 1) SetError(ECODE.BUF_RIGHT_FRONT_LEFT_DETECT_SENSOR_ERROR);
+                    //    break;
+                    //}
 
-                    if (ret2 == 1)
-                    {
-                        Machine.Parts[place2[1, unitNo]].exist = true;
-                        Machine.Parts[transfer[1, unitNo]].exist = false;
-                    }
-                    else
-                    {
-                        if (unitNo == 0) SetError(ECODE.BUF_LEFT_FRONT_RIGHT_DETECT_SENSOR_ERROR);
-                        if (unitNo == 1) SetError(ECODE.BUF_RIGHT_FRONT_RIGHT_DETECT_SENSOR_ERROR);
-                        break;
-                    }
-                    NextStep();
+                    //if (ret2 == 1)
+                    //{
+                    //    Machine.Parts[place2[1, unitNo]].exist = true;
+                    //    Machine.Parts[transfer[1, unitNo]].exist = false;
+                    //}
+                    //else
+                    //{
+                    //    if (unitNo == 0) SetError(ECODE.BUF_LEFT_FRONT_RIGHT_DETECT_SENSOR_ERROR);
+                    //    if (unitNo == 1) SetError(ECODE.BUF_RIGHT_FRONT_RIGHT_DETECT_SENSOR_ERROR);
+                    //    break;
+                    //}
+                    //NextStep();
                     break;
 
                 case STEP.ULD_BUF_DETECT_OFF_CHECK:
@@ -1398,31 +1404,31 @@ namespace CAMASSEMBLYMACHINE.Process
                         NextStep();
                         break;
                     }
-                    Machine.IO.GetIn(inIo[(int)IOIn.DETACH3, unitNo], ref ret1);
-                    Machine.IO.GetIn(inIo[(int)IOIn.DETACH4, unitNo], ref ret2);
+                    //Machine.IO.GetIn(inIo[(int)IOIn.DETACH3, unitNo], ref ret1);
+                    //Machine.IO.GetIn(inIo[(int)IOIn.DETACH4, unitNo], ref ret2);
 
-                    if (Machine.status.mode == SystemMode.SystemModeDRYRUN)
-                    {
-                        ret1 = 0;
-                        ret2 = 0;
-                    }
-                    if (ret1 != 0)
-                    {
-                        if (timeWait[(int)TIMER.TIMEOUT].Elapsed > 5000)
-                        {
-                            if (unitNo == 0) SetError(ECODE.BUF_LEFT_FRONT_LEFT_DETECT_SENSOR_ERROR);
-                            if (unitNo == 1) SetError(ECODE.BUF_RIGHT_FRONT_LEFT_DETECT_SENSOR_ERROR);
-                        }
-                    }
-                    else if (ret2 != 0)
-                    {
-                        if (timeWait[(int)TIMER.TIMEOUT].Elapsed > 5000)
-                        {
-                            if (unitNo == 0) SetError(ECODE.BUF_LEFT_FRONT_RIGHT_DETECT_SENSOR_ERROR);
-                            if (unitNo == 1) SetError(ECODE.BUF_RIGHT_FRONT_RIGHT_DETECT_SENSOR_ERROR);
-                        }
-                    }
-                    else NextStep();
+                    //if (Machine.status.mode == SystemMode.SystemModeDRYRUN)
+                    //{
+                    //    ret1 = 0;
+                    //    ret2 = 0;
+                    //}
+                    //if (ret1 != 0)
+                    //{
+                    //    if (timeWait[(int)TIMER.TIMEOUT].Elapsed > 5000)
+                    //    {
+                    //        if (unitNo == 0) SetError(ECODE.BUF_LEFT_FRONT_LEFT_DETECT_SENSOR_ERROR);
+                    //        if (unitNo == 1) SetError(ECODE.BUF_RIGHT_FRONT_LEFT_DETECT_SENSOR_ERROR);
+                    //    }
+                    //}
+                    //else if (ret2 != 0)
+                    //{
+                    //    if (timeWait[(int)TIMER.TIMEOUT].Elapsed > 5000)
+                    //    {
+                    //        if (unitNo == 0) SetError(ECODE.BUF_LEFT_FRONT_RIGHT_DETECT_SENSOR_ERROR);
+                    //        if (unitNo == 1) SetError(ECODE.BUF_RIGHT_FRONT_RIGHT_DETECT_SENSOR_ERROR);
+                    //    }
+                    //}
+                    //else NextStep();
                     break;
                 #endregion
                 //#region PEELING I/O

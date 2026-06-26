@@ -486,6 +486,7 @@ namespace CAMASSEMBLYMACHINE.UI
 
             var proc2 = Machine.proclist[(int)Machine.PROCESS.JIGWORK];
             proc2.SetMessage((int)ProcessJigWork.MSG.MSG_ALIGNMENT_PRODUCT);
+            //proc2.SetMessage((int)ProcessJigWork.MSG.MSG_PLACE_PRODUCT);
         }
 
         public enum BTN_TAB_SELECT
